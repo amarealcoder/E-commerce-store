@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fruktur&family=Irish+Grover&family=Montserrat:wght@700&family=Patrick+Hand&family=Permanent+Marker&display=swap');
+
 .homeContainer {
   margin: 0 25px;
+  overflow: hidden;
 }
 .homeContainer .headerIcons {
   margin-top: 50px;
@@ -15,7 +18,7 @@
 }
 
 .homeContainer h2 {
-  width: 326px;
+  width: 95%;
   font-weight: bold;
   font-size: 24px;
   line-height: 32px;
@@ -30,31 +33,113 @@
 .homeContainer input {
   border: 1px solid #bababa;
   border-radius: 10px;
-  padding: 12px 100px;
+  padding: 12px 20%;
   margin: 25px 0;
   background-image: url(../images/search.png);
   padding-left: 40px;
   background-repeat: no-repeat;
   background-position: 10px 0.75rem;
 }
+.homeContainer input:focus {
+  outline: 2px solid #16c782;
+}
 
 .homeProdDisplay {
   background: #f6f6f6;
   border-radius: 30px 30px 0px 0px;
+  height: auto;
+  min-width: 100%;
 }
 
 .homeProdDisplay ul {
   display: flex;
-  /* overflow: hidden; */
-  /* flex-direction: row; */
-  /* justify-content: space-around; */
-   overflow-x: scroll;
-  
+  overflow-x: scroll;
 }
 
 .homeProdDisplay ul > li {
   margin-top: 32px;
   list-style: none;
-  padding: 0px 0px 0px 30px;
- 
+  padding: 0px 0px 0px 40px;
+  color: #7f7f7f;
+  font-size: 14px;
+}
+
+.homeProdDisplay .prodContainer {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.homeProdDisplay .prodList {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 10px 0px 30px;
+  padding: 10px 0px 0px 20px;
+  width: 20rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.homeProdDisplay .prodList h2 {
+  font-weight: 700;
+  font-size: 22px;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 30px;
+}
+
+.homeProdDisplay .shopNow {
+  margin: 28px 0;
+  width: 100px;
+  height: 20px;
+}
+.homeProdDisplay .shopNow a {
+  text-decoration: none;
+  color: #16c782;
+}
+.homeProdDisplay .shopNow a > span > img {
+  margin-bottom: -5px;
+  margin-right: -5px;
+}
+.homeProdDisplay .featured {
+  margin: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.homeProdDisplay .featured a {
+  text-decoration: none;
+  color: #7f7f7f;
+}
+.homeProdDisplay .featuredContainer {
+  display: flex;
+  overflow-x: scroll;
+}
+.homeProdDisplay .featuredProducts {
+  margin: 20px 30px;
+  background-color: #ffffff;
+  width: 250px;
+  height: auto;
+  box-shadow: 0px 4px 30px rgba(104, 117, 130, 0.05);
+  border-radius: 15px;
+}
+.homeProdDisplay .featuredProducts p {
+  margin: 15px 0 0 10px;
+  font-size: 14px;
+}
+
+.homeProdDisplay .featuredProducts span {
+  display: inline-block;
+  margin: 5px 0 5px 10px;
+  font-size: 14px;
+  /* margin: 10px; */
+}
+
+@media (min-width: 600px) {
+  .homeProdDisplay .featured {
+    justify-content: space-around;
+  }
+  .homeProdDisplay .featuredProducts {
+    text-align: center;
+  }
 }
