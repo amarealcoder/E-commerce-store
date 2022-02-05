@@ -1,6 +1,7 @@
 import styles from './Auth.module.css';
-import bgImage from '../images/authImg.png';
 import AuthForm from '../components/AuthForm';
+
+import bgImage from '../images/bgImage.png';
 
 const Authentication = () => {
   return (
