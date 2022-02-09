@@ -1,0 +1,77 @@
+.searchContainer {
+  margin: 60px 24px;
+}
+
+.searchInputSection .searchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchResult .searchTitle {
+  margin: 20px 0px;
+  font-size: 16px;
+  font-weight: 400px;
+}
+.searchResult div {
+  display: flex;
+  align-items: center;
+  margin: 25px 0px;
+}
+.searchResult .prodTitle {
+  flex: none;
+  /* order: 1; */
+  flex-grow: 1;
+  margin: 0px 10px;
+  font-size: 14px;
+}
+.popularProducts .popularTitle {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.popularProducts .popularProdContainer {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 15px;
+  margin: 25px 0px;
+}
+.popularProducts .prodImageContainer {
+  background-color: #f6f6f6;
+  width: 75px;
+  height: 75px;
+  margin: 0px 15px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.popularProducts .prodImageContainer img {
+  width: 55px;
+  height: 55px;
+  /* align-self: stretch; */
+}
+.popularProducts .prodItem {
+  font-size: 16px;
+  margin: 5px 0px;
+}
+.popularProducts .prodPrice {
+  font-size: 14px;
+  margin: 5px 0px;
+}
+.popularProducts .reviewsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20px;
+  order: 1;
+  align-self: stretch;
+}
+.popularProducts .reviewsContainer span,
+p {
+  margin: 0 10px 0 5px;
+  font-size: 12px;
+}
+.popularProducts .popularProdContainer p {
+  flex-grow: 1;
+  margin-right: 80px;
+}
