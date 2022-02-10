@@ -67,3 +67,8 @@
   text-align: center;
   padding: 24px;
 }
+.container2 .rating{
+  /* background-color: #ffffff; */
+  margin: 0 0 15px 50px
+  /* text-align: center; */
+}

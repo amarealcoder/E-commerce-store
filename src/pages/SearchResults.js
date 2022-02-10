@@ -5,6 +5,7 @@ import Product from '../components/Product';
 import chevronRight from '../images/chevron-left.png';
 import cart from '../images/shopping-cart.png';
 import filter from '../images/sliders.png';
+import Rating from '../components/Rating';
 
 const SearchResults = () => {
   return (
@@ -36,18 +37,29 @@ const SearchResults = () => {
       </section>
 
       <section className={styles.container2}>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        {/* <div>
-          <div className={styles.products}>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+        <Product>
+          <div className={styles.rating}>
+            <Rating />
           </div>
-        </div> */}
+        </Product>
+
+        <Product>
+          <div className={styles.rating}>
+            <Rating />
+          </div>
+        </Product>
+
+        <Product>
+          <div className={styles.rating}>
+            <Rating />
+          </div>
+        </Product>
+
+        <Product>
+          <div className={styles.rating}>
+            <Rating />
+          </div>
+        </Product>
       </section>
     </div>
   );

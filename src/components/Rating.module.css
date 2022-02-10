@@ -1,0 +1,26 @@
+.reviewsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* text-align: center; */
+  /* justify-content: center; */
+  height: 20px;
+  /* width: 150px; */
+  order: 1;
+  align-self: stretch;
+  height: auto;
+}
+/* .reviewsContainer .reviewsContent{
+    display: flex;
+    flex-grow: 1;
+} */
+.reviewsContainer span {
+  margin: 0 10px 0 5px;
+  font-size: 12px;
+}
+.popularProdContainer p {
+  flex-grow: 3;
+  margin-right: 80px;
+  font-size: 12px;
+  /* margin-top: -15px; */
+}
