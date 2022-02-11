@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './SearchResults.module.css';
 import Product from '../components/Product';
 
-import chevronRight from '../images/chevron-left.png';
-import cart from '../images/shopping-cart.png';
+import ProductsHeader from '../components/ProductsHeader';
+
 import filter from '../images/sliders.png';
 import Rating from '../components/Rating';
 
@@ -11,10 +11,7 @@ const SearchResults = () => {
   return (
     <div>
       <section className={styles.container1}>
-        <header className={styles.headerContainer}>
-          <img src={chevronRight} alt='a right angle' />
-          <img src={cart} />
-        </header>
+        <ProductsHeader />
 
         <div className={styles.title}>
           <p>Headphone</p>
