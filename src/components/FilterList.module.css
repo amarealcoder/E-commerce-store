@@ -1,0 +1,12 @@
+ul {
+  display: flex;
+  overflow-x: scroll;
+}
+
+ul > li {
+  margin-top: 32px;
+  list-style: none;
+  padding: 0px 0px 0px 40px;
+  color: #7f7f7f;
+  font-size: 14px;
+}
