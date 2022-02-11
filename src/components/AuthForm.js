@@ -1,4 +1,5 @@
 import styles from './AuthForm.module.css';
+import Button from './Button';
 
 const AuthForm = () => {
   return (
@@ -19,7 +20,7 @@ const AuthForm = () => {
       <p className={styles.forgotPwd}>Forgot Password</p>
 
       <div className={styles.formActions}>
-        <button>Sign In</button>
+       <Button>Sign In</Button>
         <p className={styles.formQuestion}>
           Didn't have any accout? <a href=''>Sign Up here</a>
         </p>

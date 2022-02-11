@@ -1,12 +1,13 @@
 import styles from './Home.module.css';
 import Product from '../components/Product';
+import Input from '../components/Input';
+import FilterList from '../components/FilterList';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
 import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
-import Input from '../components/Input';
 
 const Home = () => {
   return (
@@ -30,17 +31,7 @@ const Home = () => {
       </section>
 
       <section className={styles.homeProdDisplay}>
-        <ul>
-          <li>headphones</li>
-          <li>headband</li>
-          <li>earpods</li>
-          <li>headphones</li>
-          <li>headband</li>
-          <li>earpods</li>
-          <li>headphones</li>
-          <li>headband</li>
-          <li>earpods</li>
-        </ul>
+       <FilterList />
 
         <div className={styles.prodContainer}>
           <div className={styles.prodList}>

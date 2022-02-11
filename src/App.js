@@ -1,18 +1,19 @@
 // import logo from './logo.svg';
 // import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Authentication from './pages/Auth';
+import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import SearchResults from './pages/SearchResults';
+import FilterModal from './pages/FilterModal';
 
 function App() {
   // const classes = useStyles();
 
   return (
     <Switch>
-      <Route path='/signIn'>
-        <Authentication />
+      <Route path='/sign-in'>
+        <SignIn />
       </Route>
       <Route path='/home'>
         <Home />
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path='/search-results'>
         <SearchResults />
+      </Route>
+      <Route path='/modal'>
+        <FilterModal />
       </Route>
     </Switch>
   );

@@ -1,9 +1,9 @@
-import styles from './Auth.module.css';
+import styles from './SignIn.module.css';
 import AuthForm from '../components/AuthForm';
 
 import bgImage from '../images/bgImage.png';
 
-const Authentication = () => {
+const SignIn = () => {
   return (
     <div
       className={styles.bg}
@@ -29,4 +29,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default SignIn;
