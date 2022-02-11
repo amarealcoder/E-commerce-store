@@ -1,10 +1,12 @@
 import styles from './Home.module.css';
+import Product from '../components/Product';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
 import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
+import Input from '../components/Input';
 
 const Home = () => {
   return (
@@ -23,11 +25,7 @@ const Home = () => {
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
-          <input
-            type='text'
-            placeholder='Search something'
-            className={styles.homeInput}
-          />
+          <Input />
         </div>
       </section>
 
@@ -86,23 +84,9 @@ const Home = () => {
         </div>
 
         <div className={styles.featuredContainer}>
-          <div className={styles.featuredProducts}>
-            <img src={headSet} alt='a product image' />
-            <p>TMA-2 HD Wirelss</p>
-            <span>USD 350</span>
-          </div>
-
-          <div className={styles.featuredProducts}>
-            <img src={headSet} alt='a product image' />
-            <p>TMA-2 HD Wirelss</p>
-            <span>USD 350</span>
-          </div>
-
-          <div className={styles.featuredProducts}>
-            <img src={headSet} alt='a product image' />
-            <p>TMA-2 HD Wirelss</p>
-            <span>USD 350</span>
-          </div>
+          <Product />
+          <Product />
+          <Product />
         </div>
       </section>
     </div>

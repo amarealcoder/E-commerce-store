@@ -1,0 +1,20 @@
+.products {
+  margin: 20px 30px;
+  background-color: #ffffff;
+  width: 250px;
+  height: auto;
+  box-shadow: 0px 4px 30px rgba(104, 117, 130, 0.05);
+  border-radius: 15px;
+  text-align: center;
+}
+.products p {
+  margin: 15px 0 0 10px;
+  font-size: 14px;
+}
+
+.products span {
+  display: inline-block;
+  margin: 5px 0 5px 10px;
+  font-size: 14px;
+  /* margin: 10px; */
+}
