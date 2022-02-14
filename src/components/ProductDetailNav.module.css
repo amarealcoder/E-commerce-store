@@ -1,0 +1,16 @@
+ul {
+  display: flex;
+  align-items: flex-start;
+  width: 326px;
+  height: 33px;
+  left: 25px;
+  top: 244px;
+}
+ul > li {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  width: 70px;
+  height: 33px;
+  margin: 0px 34px;
+}
