@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import SearchResults from './pages/SearchResults';
 import FilterModal from './pages/FilterModal';
+import ProductsDetailOverview from './pages/ProductsDetailOverview';
 
 function App() {
   // const classes = useStyles();
@@ -26,6 +27,9 @@ function App() {
       </Route>
       <Route path='/modal'>
         <FilterModal />
+      </Route>
+      <Route path='/product-overview'>
+        <ProductsDetailOverview />
       </Route>
     </Switch>
   );

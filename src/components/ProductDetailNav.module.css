@@ -1,16 +1,14 @@
-ul {
+.nav {
   display: flex;
-  align-items: flex-start;
-  width: 326px;
-  height: 33px;
-  left: 25px;
-  top: 244px;
-}
-ul > li {
-  display: flex;
-  /* flex-direction: column; */
+  justify-content: space-around;
   align-items: center;
+  text-align: center;
+  margin-right: 50px;
+}
+
+.nav li {
   width: 70px;
   height: 33px;
-  margin: 0px 34px;
+  list-style: none;
+  /* margin: 0px 34px; */
 }

@@ -1,7 +1,7 @@
-import styles from './ProductDetailNav';
+import styles from './ProductDetailNav.module.css';
 
 const ProductDetailNav = () => {
-    return <ul>
+    return <ul className={styles.nav}>
         <li>Overview</li>
         <li>Features</li>
         <li>Specification</li>
