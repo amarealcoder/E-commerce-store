@@ -1,0 +1,17 @@
+.productFeatures {
+  margin: 30px;
+}
+.productFeatures .title {
+  width: 318px;
+  height: 24px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 13px 0px;
+}
+.action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

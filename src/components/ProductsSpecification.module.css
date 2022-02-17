@@ -1,0 +1,12 @@
+.productsContainer {
+  display: flex;
+  margin: 24px 0;
+}
+
+.productsContainer .productsTitle {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}

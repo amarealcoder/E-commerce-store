@@ -7,6 +7,7 @@ import Search from './pages/Search';
 import SearchResults from './pages/SearchResults';
 import FilterModal from './pages/FilterModal';
 import ProductsDetailOverview from './pages/ProductsDetailOverview';
+import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
 
 function App() {
   // const classes = useStyles();
@@ -30,6 +31,9 @@ function App() {
       </Route>
       <Route path='/product-overview'>
         <ProductsDetailOverview />
+      </Route>
+      <Route path='/product-specification'>
+        <ProductsDetailSpecification />
       </Route>
     </Switch>
   );
