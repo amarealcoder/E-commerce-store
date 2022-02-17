@@ -1,29 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fruktur&family=Irish+Grover&family=Montserrat:wght@700&family=Patrick+Hand&family=Permanent+Marker&display=swap');
 
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-
-  position: absolute;
+.titleBadge {
   height: 98px;
-  left: 24px;
-  right: 24px;
-  top: 117px;
+  margin-left: 24px;
+  margin-right: 50px;
 }
 
-p {
+.titleBadge p {
   width: 68px;
   height: 20px;
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
   color: #0acf83;
-  margin: 6px 0px;
 }
 
-h2 {
+.titleBadge h2 {
   width: 327px;
   height: 72px;
   top: 26px;
@@ -32,5 +24,4 @@ h2 {
   font-weight: bold;
   font-size: 28px;
   line-height: 36px;
-  margin: 6px 0px;
 }
