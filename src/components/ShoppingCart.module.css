@@ -1,0 +1,95 @@
+.container {
+  margin: 40px 30px;
+  /* width: 370px; */
+}
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 55px;
+  padding: 0px 24px;
+}
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
+.imageContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  width: 87px;
+  height: 87px;
+  background: #f6f6f6;
+  border-radius: 10px;
+  margin: 0px 15px;
+}
+.imageContainer img {
+  width: 67px;
+  height: 67px;
+}
+.imageInfo {
+  width: 224px;
+  height: 87px;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  margin: 0px 15px;
+}
+.amount {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+}
+.actionGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 224px;
+  height: 30px;
+  margin: 12px 0px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 115px;
+}
+.buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #bababa;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0 20px;
+  align-items: center;
+}
+.totalItems {
+  font-size: 14px;
+  color: #bababa;
+  font-weight: bold;
+}
+.totalAmount {
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  .cartItems {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
