@@ -1,5 +1,8 @@
 // import logo from './logo.svg';
 // import './App.css';
+import { useContext } from 'react';
+import AuthContext from './store/AuthContext';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import Home from './pages/Home';
@@ -8,16 +11,21 @@ import SearchResults from './pages/SearchResults';
 import FilterModal from './pages/FilterModal';
 import ProductsDetailOverview from './pages/ProductsDetailOverview';
 import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
+import ShoppingCart from './components/ShoppingCart';
+import Profile from './pages/Profile';
 
 function App() {
   // const classes = useStyles();
-
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
   return (
     <Switch>
-      <Route path='/sign-in'>
-        <SignIn />
-      </Route>
-      <Route path='/home'>
+      {!isLoggedIn && (
+        <Route path='/sign-in'>
+          <SignIn />
+        </Route>
+      )}
+      <Route path='/' exact>
         <Home />
       </Route>
       <Route path='/search'>
@@ -34,6 +42,12 @@ function App() {
       </Route>
       <Route path='/product-specification'>
         <ProductsDetailSpecification />
+      </Route>
+      <Route path='/cart'>
+        <ShoppingCart />
+      </Route>
+      <Route path='/profile'>
+        <Profile />
       </Route>
     </Switch>
   );

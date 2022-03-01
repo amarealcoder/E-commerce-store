@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 import styles from './AuthForm.module.css';
 import Button from './Button';
@@ -6,13 +7,18 @@ import Button from './Button';
 import facebookIcon from '../images/facebookIcon.png';
 import googleIcon from '../images/googleIcon.png';
 import appleIcon from '../images/appleIcon.png';
+import AuthContext from '../store/AuthContext';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 // console.log(API_KEY);
 
+
 const AuthForm = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  
+  const authCtx = useContext(AuthContext);
+   const history = useHistory();
 
   const [isSignedIn, setIsSignedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +72,8 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        console.log(data);
+        authCtx.login(data.idToken);
+        history.replace('/');
       })
       .catch((err) => {
         console.log(err.message);
