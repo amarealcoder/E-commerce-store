@@ -57,7 +57,7 @@ const AuthForm = () => {
         setIsLoading(false);
         if (res.ok) {
           console.log('sent');
-          return res.json()
+          return res.json();
         } else {
           res.json().then((data) => {
             //show error modal
@@ -72,13 +72,19 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
+        console.log(data)
         authCtx.login(data.idToken);
+        localStorage.setItem('token', data.idToken)
         history.replace('/');
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
+
+  const switchToProfileHandler = () => {
+    history.push('/profile')
+  }
 
   return (
     <form onSubmit={submitHandler} className={styles.formContainer}>
@@ -100,7 +106,7 @@ const AuthForm = () => {
       />
 
       {isSignedIn ? (
-        <p className={styles.forgotPwd}>Forgot Password</p>
+        <p onClick={switchToProfileHandler} className={styles.forgotPwd}>Forgot Password</p>
       ) : (
         <div className={styles.socialIcons}>
           <img src={appleIcon} alt='' />

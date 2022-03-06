@@ -43,6 +43,10 @@
   line-height: 20px;
   letter-spacing: 0.1px;
 }
+.formContainer .forgotPwd:hover{
+  color: #0acf83;
+  cursor: pointer;
+}
 .formContainer .formActions {
   margin-top: 32px;
 }

@@ -13,6 +13,7 @@ import ProductsDetailOverview from './pages/ProductsDetailOverview';
 import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
 import ShoppingCart from './components/ShoppingCart';
 import Profile from './pages/Profile';
+import ChangePassword from './components/profileDetails/ChangePassword';
 
 function App() {
   // const classes = useStyles();
@@ -48,6 +49,10 @@ function App() {
       </Route>
       <Route path='/profile'>
         <Profile />
+      </Route>
+
+      <Route path='/password-change'>
+        <ChangePassword />
       </Route>
     </Switch>
   );
