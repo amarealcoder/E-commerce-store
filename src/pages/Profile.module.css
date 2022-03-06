@@ -35,10 +35,14 @@
 .profileActions {
   margin-top: 35px;
 }
-.profileActions p {
+.profileActions .profileInfo {
   padding: 15px 24px;
   width: 375px;
   height: 51px;
+  cursor: pointer;
+}
+.profileActions .profileInfo:hover {
+  color:#7f7f7f
 }
 .general,
 .legal,

@@ -9,3 +9,5 @@ This is an e-commerce store, built with...
         Material UI is used to create the navbar.  -->
 
 2. React-Router-Dom for multipage navigation.
+
+3. Firebase for authentication.

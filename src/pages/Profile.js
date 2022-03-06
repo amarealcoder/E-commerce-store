@@ -1,7 +1,15 @@
+import { useHistory } from 'react-router-dom';
 import styles from './Profile.module.css';
 import chevronRight from '../images/chevron-left.png';
 import profileImage from '../images/Avatar.png';
+
 const Profile = () => {
+  const history = useHistory();
+
+  const changePasswordHandler = () => {
+    history.push('/password-change');
+  };
+
   return (
     <div className={styles.container}>
       <section>
@@ -20,23 +28,25 @@ const Profile = () => {
       </section>
       <section className={styles.profileActions}>
         <p className={styles.general}>General</p>
-        <p>Edit profile</p>
+        <p onClick={changePasswordHandler} className={styles.profileInfo}>
+          Edit profile
+        </p>
         <hr />
-        <p>Notifications</p>
+        <p className={styles.profileInfo}>Notifications</p>
         <hr />
-        <p>Wishlist</p>
+        <p className={styles.profileInfo}>Wishlist</p>
         <hr />
 
         <p className={styles.legal}>Legal</p>
-        <p>Terms of use</p>
+        <p className={styles.profileInfo}>Terms of use</p>
         <hr />
-        <p>Privacy policy</p>
+        <p className={styles.profileInfo}>Privacy policy</p>
         <hr />
 
         <p className={styles.personal}>Personal</p>
-        <p>Report a bug</p>
+        <p className={styles.profileInfo}>Report a bug</p>
         <hr />
-        <p>Log out</p>
+        <p className={styles.profileInfo}>Log out</p>
       </section>
     </div>
   );

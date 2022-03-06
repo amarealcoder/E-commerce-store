@@ -1,4 +1,7 @@
 import styles from './Home.module.css';
+
+import { useHistory } from 'react-router-dom';
+
 import Product from '../components/Product';
 import Input from '../components/Input';
 import FilterList from '../components/FilterList';
@@ -10,6 +13,12 @@ import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
 
 const Home = () => {
+  const history = useHistory();
+
+  const switchToProfileHandler = () => {
+    history.push('/profile');
+  };
+  
   return (
     <div>
       <section className={styles.homeContainer}>
@@ -18,7 +27,11 @@ const Home = () => {
 
           <img src={logoIcon} alt='logo icon' />
 
-          <img src={avatarIcon} alt='profile icon' />
+          <img
+            onClick={switchToProfileHandler}
+            src={avatarIcon}
+            alt='profile icon'
+          />
         </header>
 
         <div>
@@ -31,7 +44,7 @@ const Home = () => {
       </section>
 
       <section className={styles.homeProdDisplay}>
-       <FilterList />
+        <FilterList />
 
         <div className={styles.prodContainer}>
           <div className={styles.prodList}>
