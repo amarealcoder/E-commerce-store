@@ -12,6 +12,9 @@
   overflow-x: scroll;
   background: #f6f6f6;
 }
+.productImages::-webkit-scrollbar{
+  width: 0px;
+}
 .productImages img {
   width: 200px;
   height: 250px;
@@ -50,6 +53,9 @@
 .otherProductsImg {
   display: flex;
   overflow-x: scroll;
+}
+.otherProductsImg::-webkit-scrollbar{
+  width: 0px;
 }
 .actionBtn {
   position: absolute;

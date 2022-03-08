@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Fruktur&family=Irish+Grover&family=Montserrat:wght@700&family=Patrick+Hand&family=Permanent+Marker&display=swap');
 
-
-
 .container1 .title {
   margin: 0 25px 25px 25px;
 }
@@ -61,7 +59,6 @@
   padding: 24px;
 }
 .container2 .rating{
-  /* background-color: #ffffff; */
   margin: 0 0 15px 50px
-  /* text-align: center; */
+  
 }
