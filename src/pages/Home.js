@@ -12,7 +12,7 @@ import avatarIcon from '../images/Avatar.png';
 import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
 
-const Home = () => {
+const Home = (props) => {
   const history = useHistory();
 
   const switchToProfileHandler = () => {
@@ -88,9 +88,9 @@ const Home = () => {
         </div>
 
         <div className={styles.featuredContainer}>
-          <Product />
-          <Product />
-          <Product />
+          <Product /> 
+          {/* <Product />
+          <Product /> */}
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from './store/AuthContext';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -15,8 +15,30 @@ import ShoppingCart from './components/ShoppingCart';
 import Profile from './pages/Profile';
 import ChangePassword from './components/profileDetails/ChangePassword';
 
-function App() {
-  // const classes = useStyles();
+// const productsAPI = process.env.REACT_APP_PRODUCTSAPI_KEY;
+
+function App(props) {
+  // const [products, setProducts] = useState(null);
+
+  // const fetchProductsApi = (props) => {
+  //   fetch(productsAPI)
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setProducts(products);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  //   return <></>;
+  // };
+
+  // useEffect(() => {
+  //   fetchProductsApi();
+  // }, [fetchProductsApi]);
+
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
   return (
