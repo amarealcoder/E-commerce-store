@@ -1,3 +1,6 @@
+.productsContainer{
+  display: flex;
+}
 .products {
   margin: 20px 30px;
   background-color: #ffffff;
@@ -17,4 +20,8 @@
   margin: 5px 0 5px 10px;
   font-size: 14px;
   /* margin: 10px; */
+}
+.products img {
+  width: 125px;
+  height: 125px;
 }
