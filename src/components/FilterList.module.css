@@ -3,6 +3,10 @@
   overflow-x: scroll;
 }
 
+.list::-webkit-scrollbar {
+  width: 0px;
+}
+
 .list > li {
   margin-top: 32px;
   list-style: none;
