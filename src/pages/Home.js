@@ -1,4 +1,5 @@
 import styles from './Home.module.css';
+// import { useState, useEffect } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const Home = (props) => {
   const switchToProfileHandler = () => {
     history.push('/profile');
   };
-  
+
   return (
     <div>
       <section className={styles.homeContainer}>
@@ -88,9 +89,7 @@ const Home = (props) => {
         </div>
 
         <div className={styles.featuredContainer}>
-          <Product /> 
-          {/* <Product />
-          <Product /> */}
+          <Product />
         </div>
       </section>
     </div>
