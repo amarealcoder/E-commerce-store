@@ -1,15 +1,15 @@
 import styles from './Rating.module.css';
-import star from '../images/star-filled.png';
-import dots from '../images/more-vertical.png';
+
+import { AiFillStar } from 'react-icons/ai';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 const Rating = () => {
   return (
     <div className={styles.reviewsContainer}>
-      <img src={star} alt='star icon' className={styles.star} />
+      <AiFillStar style={{color: 'yellow', fontSize: '20px'}}/>
       <span>4.6</span>
-      <p>86 Reviews</p>
-
-      <img src={dots} alt='' />
+      <span>86 Reviews</span>
+      <BsThreeDotsVertical />
     </div>
   );
 };

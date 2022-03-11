@@ -1,14 +1,17 @@
 import styles from './Product.module.css';
 import { useState, useEffect } from 'react';
 
-// import headSet from '../images/headset.png';
+import { FaSpinner } from 'react-icons/fa';
 
 const productsAPI = process.env.REACT_APP_PRODUCTSAPI_KEY;
 
 const Product = (props) => {
   const [productItems, setProductItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     fetch(productsAPI)
       .then((response) => {
         return response.json();
@@ -20,10 +23,17 @@ const Product = (props) => {
       .catch((err) => {
         console.log(err);
       });
+    setIsLoading(false);
   }, []);
 
   return (
     <div className={styles.productsContainer}>
+      {!isLoading && (
+        <FaSpinner
+          style={{ fontSize: '50px' }}
+          className={styles.loadingIcon}
+        />
+      )}
       {productItems.map((item) => (
         <div key={item.id} className={styles.products}>
           <img src={item.image} alt={item.title} />
@@ -32,7 +42,7 @@ const Product = (props) => {
           {props.children}
         </div>
       ))}
-     </div> 
+    </div>
   );
 };
 export default Product;

@@ -39,24 +39,6 @@ const SearchResults = () => {
             <Rating />
           </div>
         </Product>
-
-        <Product>
-          <div className={styles.rating}>
-            <Rating />
-          </div>
-        </Product>
-
-        <Product>
-          <div className={styles.rating}>
-            <Rating />
-          </div>
-        </Product>
-
-        <Product>
-          <div className={styles.rating}>
-            <Rating />
-          </div>
-        </Product>
       </section>
     </div>
   );

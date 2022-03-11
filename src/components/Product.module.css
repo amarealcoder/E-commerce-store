@@ -25,3 +25,14 @@
   width: 125px;
   height: 125px;
 }
+.loadingIcon{
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
