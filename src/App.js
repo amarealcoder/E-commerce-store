@@ -1,7 +1,6 @@
-// import logo from './logo.svg';
-// import './App.css';
-import { useContext} from 'react';
-import AuthContext from './store/AuthContext';
+import { useContext } from 'react';
+import  AuthContext  from './store/AuthContext';
+import { ProductsProvider } from './store/ProductsContext';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 import SignIn from './pages/SignIn';
@@ -21,38 +20,43 @@ function App() {
   return (
     <Switch>
       {!isLoggedIn && (
-        <Route path='/sign-in'>
-          <SignIn />
+        <>
+          <Route path='/sign-in'>
+            <SignIn />
+          </Route>
+        </>
+      )}
+      {isLoggedIn && (
+        <Route path='/password-change'>
+          <ChangePassword />
         </Route>
       )}
-      <Route path='/' exact>
-        <Home />
-      </Route>
-      <Route path='/search'>
-        <Search />
-      </Route>
-      <Route path='/search-results'>
-        <SearchResults />
-      </Route>
-      <Route path='/modal'>
-        <FilterModal />
-      </Route>
-      <Route path='/product-overview'>
-        <ProductsDetailOverview />
-      </Route>
-      <Route path='/product-specification'>
-        <ProductsDetailSpecification />
-      </Route>
-      <Route path='/cart'>
-        <ShoppingCart />
-      </Route>
-      <Route path='/profile'>
-        <Profile />
-      </Route>
-
-      <Route path='/password-change'>
-        <ChangePassword />
-      </Route>
+      <ProductsProvider>
+        <Route path='/' exact>
+          <Home />
+        </Route>
+        <Route path='/search'>
+          <Search />
+        </Route>
+        <Route path='/search-results'>
+          <SearchResults />
+        </Route>
+        <Route path='/modal'>
+          <FilterModal />
+        </Route>
+        <Route path='/product-overview'>
+          <ProductsDetailOverview />
+        </Route>
+        <Route path='/product-specification'>
+          <ProductsDetailSpecification />
+        </Route>
+        <Route path='/cart'>
+          <ShoppingCart />
+        </Route>
+        <Route path='/profile'>
+          <Profile />
+        </Route>
+      </ProductsProvider>
     </Switch>
   );
 }

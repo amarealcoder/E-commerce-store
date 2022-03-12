@@ -22,8 +22,8 @@ const ChangePassword = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          // idToken: authCtx.token,
-          idToken: localStorage.getItem('token'),
+          idToken: authCtx.token,
+          // idToken: localStorage.getItem('token'),
           password: newPassword,
           returnSecureToken: false,
         }),

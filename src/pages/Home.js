@@ -1,7 +1,7 @@
 import styles from './Home.module.css';
-// import { useState, useEffect } from 'react';
-
 import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { ProductsContext } from '../store/ProductsContext';
 
 import Product from '../components/Product';
 import Input from '../components/Input';
@@ -13,7 +13,15 @@ import avatarIcon from '../images/Avatar.png';
 import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
 
+import { FaSpinner } from 'react-icons/fa';
+
 const Home = (props) => {
+  const { productItems, isLoading } = useContext(ProductsContext);
+  // const [isLoading, setIsLoading] = useContext(ProductsContext)
+
+  console.log(productItems);
+  console.log(isLoading);
+
   const history = useHistory();
 
   const switchToProfileHandler = () => {
@@ -89,7 +97,22 @@ const Home = (props) => {
         </div>
 
         <div className={styles.featuredContainer}>
-          <Product />
+          {/* {isLoading } */}
+          {isLoading ? (
+            <FaSpinner
+              style={{ fontSize: '50px' }}
+              className={styles.loadingIcon}
+            />
+          ) : (
+            productItems.map((item) => (
+              <Product
+                key={item.id}
+                image={item.image}
+                title={item.title}
+                price={item.price}
+              />
+            ))
+          )}
         </div>
       </section>
     </div>

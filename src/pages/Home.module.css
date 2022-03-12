@@ -93,6 +93,18 @@
   width: 0px;
 }
 
+.loadingIcon {
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
 @media (min-width: 600px) {
   .homeProdDisplay .featured {
     justify-content: space-around;
