@@ -11,3 +11,6 @@ This is an e-commerce store, built with...
 2. React-Router-Dom for multipage navigation.
 
 3. Firebase for authentication.
+
+
+N.B: This project is still in progress
