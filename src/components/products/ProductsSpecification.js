@@ -1,6 +1,6 @@
 import styles from './ProductsSpecification.module.css';
 
-import headSet from '../images/headset.png';
+import headSet from '../../images/headset.png';
 
 const ProductsSpecification = () => {
   return (

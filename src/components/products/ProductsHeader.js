@@ -1,7 +1,7 @@
 import styles from './ProductsHeader.module.css';
 
-import chevronRight from '../images/chevron-left.png';
-import cart from '../images/shopping-cart.png';
+import chevronRight from '../../images/chevron-left.png';
+import cart from '../../images/shopping-cart.png';
 
 const ProductsHeader = () => {
     return (

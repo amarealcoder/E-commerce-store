@@ -2,12 +2,12 @@ import { useState, useRef, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 import styles from './AuthForm.module.css';
-import Button from './Button';
+import Button from '../ui/Button';
 
-import facebookIcon from '../images/facebookIcon.png';
-import googleIcon from '../images/googleIcon.png';
-import appleIcon from '../images/appleIcon.png';
-import AuthContext from '../store/AuthContext';
+import facebookIcon from '../../images/facebookIcon.png';
+import googleIcon from '../../images/googleIcon.png';
+import appleIcon from '../../images/appleIcon.png';
+import AuthContext from '../../store/AuthContext';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 // console.log(API_KEY);

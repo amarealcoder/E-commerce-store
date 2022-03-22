@@ -1,5 +1,5 @@
 import styles from './ChangePassword.module.css';
-import Button from '../Button';
+import Button from '../ui/Button';
 
 import { useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -22,8 +22,8 @@ const ChangePassword = () => {
       {
         method: 'POST',
         body: JSON.stringify({
-          // idToken: authCtx.token,
-          idToken: localStorage.getItem('token'),
+          idToken: authCtx.token,
+          // idToken: localStorage.getItem('token'),
           password: newPassword,
           returnSecureToken: false,
         }),

@@ -23,13 +23,13 @@
   letter-spacing: 0.2px;
 }
 .formContainer .emailInput {
-  background-image: url(../images/mailicons.svg);
+  background-image: url(../../images/mailicons.svg);
   padding-left: 40px;
   background-repeat: no-repeat;
   background-position: 10px 1rem;
 }
 .formContainer .passwordInput {
-  background-image: url(../images/lockicons.svg);
+  background-image: url(../../images/lockicons.svg);
   padding-left: 40px;
   background-repeat: no-repeat;
   background-position: 10px 1rem;
