@@ -1,5 +1,5 @@
 import styles from './SignIn.module.css';
-import AuthForm from '../components/AuthForm';
+import AuthForm from '../components/auth/AuthForm';
 
 import bgImage from '../images/bgImage.png';
 

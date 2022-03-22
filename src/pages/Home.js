@@ -1,11 +1,10 @@
 import styles from './Home.module.css';
-import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import { ProductsContext } from '../store/ProductsContext';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-import Product from '../components/Product';
-import Input from '../components/Input';
-import FilterList from '../components/FilterList';
+// import Product from '../components/Product';
+import Input from '../components/ui/Input';
+import FilterList from '../components/products/FilterList';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
@@ -13,36 +12,47 @@ import avatarIcon from '../images/Avatar.png';
 import headSet from '../images/headset.png';
 import rightArrow from '../images/arrow-right.png';
 
-import { FaSpinner } from 'react-icons/fa';
+import { FaSpinner, FaTimes } from 'react-icons/fa';
 
 const Home = (props) => {
-  const { productItems, isLoading } = useContext(ProductsContext);
-  // const [isLoading, setIsLoading] = useContext(ProductsContext)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  console.log(productItems);
-  console.log(isLoading);
-
-  const history = useHistory();
-
-  const switchToProfileHandler = () => {
-    history.push('/profile');
+  const openNavMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div>
+    <>
       <section className={styles.homeContainer}>
-        <header className={styles.headerIcons}>
-          <img src={menuIcon} alt='menu icon' />
+        <nav className={styles.headerIcons}>
+          {!isMenuOpen ? (
+            <img src={menuIcon} alt='menu icon' onClick={openNavMenu} />
+          ) : (
+            <FaTimes
+              // style={{ fontSize: '30px' }}
+              onClick={openNavMenu}
+            />
+          )}
 
+          {isMenuOpen && (
+            <ul className={styles.navContainer}>
+              <NavLink to='/search' activeClassName={styles.isActive}>
+                Search
+              </NavLink>
+              {/* <NavLink to='/products' activeClassName={styles.isActive}>
+                Products
+              </NavLink> */}
+              <NavLink to='/profile' activeClassName={styles.isActive}>
+                Profile
+              </NavLink>
+            </ul>
+          )}
           <img src={logoIcon} alt='logo icon' />
 
-          <img
-            onClick={switchToProfileHandler}
-            src={avatarIcon}
-            alt='profile icon'
-          />
-        </header>
-
+          <NavLink to='/profile'>
+            <img src={avatarIcon} alt='profile icon' />
+          </NavLink>
+        </nav>
         <div>
           <p>Hi Andrea</p>
           <h2>What are you looking for today?</h2>
@@ -97,25 +107,93 @@ const Home = (props) => {
         </div>
 
         <div className={styles.featuredContainer}>
-          {/* {isLoading } */}
-          {isLoading ? (
-            <FaSpinner
-              style={{ fontSize: '50px' }}
-              className={styles.loadingIcon}
-            />
-          ) : (
-            productItems.map((item) => (
-              <Product
-                key={item.id}
-                image={item.image}
-                title={item.title}
-                price={item.price}
-              />
-            ))
-          )}
+          <FaSpinner
+            style={{ fontSize: '50px' }}
+            className={styles.loadingIcon}
+          />
         </div>
       </section>
-    </div>
+    </>
   );
 };
+
 export default Home;
+
+/* const Navbar = () => {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const openNav = () => {
+    setNavOpen(!navOpen)
+  }
+
+ 
+
+  return (
+    <aside className={styles.aside}>
+      <div className={styles.logoContainer}>
+        <img src={logo} alt='logo' />
+
+        {!navOpen ? (
+          <FaAlignJustify
+            style={{ fontSize: '30px', color: '#fff' }}
+            onClick={openNav}
+            className={styles.toggleIcon}
+          />
+        ) : (
+          <FaTimes
+           
+            onClick={openNav}
+            className={styles.toggleIcon}
+          />
+        )}
+      </div>
+
+      <div className={`${!navOpen && styles.asideContent}`}>
+        <div className={styles.asideWallet}>
+          <div className={styles.asideWalletContainer}>
+            <div className={styles.asideWalletContent}>
+              <div className={styles.asideWalletImg}>
+                <img src={wallet} alt='wallet' />
+              </div>
+              <div className={styles.asideWalletBallanceContainer}>
+                <p>Wallet Balance</p>
+                <p className={styles.asideWalletAmount}>$15,001.00</p>
+              </div>
+            </div>
+            <AiFillEye color={'fff'} />
+          </div>
+          <hr />
+
+          <div className={styles.asideWalletContainer}>
+            <div className={styles.asideWalletContent}>
+              <div className={styles.asideWalletImg}>
+                <AiTwotoneStar
+                  style={{
+                    color: '#F59E0B',
+                    textAlign: 'center',
+                    marginTop: '4px',
+                  }}
+                />
+              </div>
+              <div className={styles.asideWalletBallanceContainer}>
+                <p>Awarded Points</p>
+                <p className={styles.asideWalletAmount}>35</p>
+              </div>
+            </div>
+          </div>
+          <hr />
+
+          <div className={styles.actionButtons}>
+            <button className={styles.btn1}>Pay-In</button>
+            <button className={styles.btn2}>Pay-Out</button>
+          </div>
+        </div>
+
+        <NavContainer />
+        <AsideCard />
+      </div>
+    </aside>
+  );
+};
+
+export default Navbar;*/

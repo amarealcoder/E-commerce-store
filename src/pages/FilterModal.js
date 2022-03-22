@@ -1,7 +1,7 @@
 import styles from './FilterModal.module.css';
 
-import FilterList from '../components/FilterList';
-import Button from '../components/Button';
+import FilterList from '../components/products/FilterList';
+import Button from '../components/ui/Button';
 
 const FilterModal = () => {
   return (

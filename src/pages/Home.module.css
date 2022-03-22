@@ -5,12 +5,36 @@
   overflow: hidden;
 }
 .homeContainer .headerIcons {
-  margin-top: 50px;
+  margin: 50px 0 29px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+.navContainer {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  top: 5rem;
+  background-color: #16c782;
+  height: 10rem;
+  width: 150px;
+  border-radius: 1rem;
+}
+.navContainer a {
+  padding: 0.75rem 0 0 1.75rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.25rem;
+  height: 100%;
+}
+a:hover,
+a.isActive {
+  background-color: #f6f6f6;
+  color: #16c782; 
+  text-decoration: underline;
+}
 .homeContainer p {
   margin: 5px 0px;
   font-size: 16px;

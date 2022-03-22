@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './SearchResults.module.css';
-import Product from '../components/Product';
+import Product from '../components/products/Product';
 
-import ProductsHeader from '../components/ProductsHeader';
+import ProductsHeader from '../components/products/ProductsHeader';
 
 import filter from '../images/sliders.png';
-import Rating from '../components/Rating';
+import Rating from '../components/ui/Rating';
 
 const SearchResults = () => {
   return (

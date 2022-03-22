@@ -1,10 +1,10 @@
 import styles from './ProductsDetailSpecification.module.css';
 
-import ProductsHeader from '../components/ProductsHeader';
-import ProductsTitleBadge from '../components/ProductsTitleBadge';
-import ProductDetailNav from '../components/ProductDetailNav';
-import ProductsSpecification from '../components/ProductsSpecification';
-import Button from '../components/Button';
+import ProductsHeader from '../components/products/ProductsHeader';
+import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
+import ProductDetailNav from '../components/products/ProductDetailNav';
+import ProductsSpecification from '../components/products/ProductsSpecification';
+import Button from '../components/ui/Button';
 
 const ProductsDetailSpecification = () => {
   return (

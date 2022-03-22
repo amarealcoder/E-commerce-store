@@ -1,7 +1,7 @@
 import styles from './Comments.module.css';
 
-import avatar from '../images/Avatar.png';
-import Star from '../images/star-filled.png';
+import avatar from '../../images/Avatar.png';
+import Star from '../../images/star-filled.png';
 
 const Comments = () => {
   return (

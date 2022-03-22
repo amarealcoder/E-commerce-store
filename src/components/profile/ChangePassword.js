@@ -1,5 +1,5 @@
 import styles from './ChangePassword.module.css';
-import Button from '../Button';
+import Button from '../ui/Button';
 
 import { useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';

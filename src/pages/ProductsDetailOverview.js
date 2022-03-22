@@ -1,13 +1,13 @@
 import styles from './ProductsDetailOverview.module.css';
 
-import ProductsHeader from '../components/ProductsHeader';
-import ProductsTitleBadge from '../components/ProductsTitleBadge';
-import ProductDetailNav from '../components/ProductDetailNav';
+import ProductsHeader from '../components/products/ProductsHeader';
+import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
+import ProductDetailNav from '../components/products/ProductDetailNav';
 
 import headSet from '../images/headset.png';
-import Comments from '../components/Comments';
-import Product from '../components/Product';
-import Button from '../components/Button';
+import Comments from '../components/ui/Comments';
+import Product from '../components/products/Product';
+import Button from '../components/ui/Button';
 
 const ProductsDetailOverview = () => {
   return (

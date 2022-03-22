@@ -1,7 +1,8 @@
 import styles from './Search.module.css';
+import { NavLink } from 'react-router-dom';
 
-import Input from '../components/Input';
-import Rating from '../components/Rating';
+import Input from '../components/ui/Input';
+import Rating from '../components/ui/Rating';
 
 import chevronRight from '../images/chevron-left.png';
 import cart from '../images/shopping-cart.png';
@@ -14,7 +15,9 @@ const Search = () => {
     <div className={styles.searchContainer}>
       <section className={styles.searchInputSection}>
         <header className={styles.searchHeader}>
-          <img src={chevronRight} alt='a right angle' />
+          <NavLink to='/'>
+            <img src={chevronRight} alt='a right angle' />
+          </NavLink>
           <h2>Search</h2>
           <img src={cart} />
         </header>

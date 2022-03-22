@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import styles from './Profile.module.css';
 import chevronRight from '../images/chevron-left.png';
 import profileImage from '../images/Avatar.png';
+import { NavLink } from 'react-router-dom';
 
 const Profile = () => {
   const history = useHistory();
@@ -28,9 +29,9 @@ const Profile = () => {
       </section>
       <section className={styles.profileActions}>
         <p className={styles.general}>General</p>
-        <p onClick={changePasswordHandler} className={styles.profileInfo}>
-          Edit profile
-        </p>
+        <NavLink to='/password-change'>
+          <p className={styles.profileInfo}>Edit profile</p>
+        </NavLink>
         <hr />
         <p className={styles.profileInfo}>Notifications</p>
         <hr />
