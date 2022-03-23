@@ -1,8 +1,9 @@
 import styles from './Home.module.css';
 import { useState } from 'react';
+import { useGetProductsQuery } from '../services/productsApi';
 import { NavLink } from 'react-router-dom';
 
-// import Product from '../components/Product';
+import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
 import FilterList from '../components/products/FilterList';
 
@@ -16,6 +17,9 @@ import { FaSpinner, FaTimes } from 'react-icons/fa';
 
 const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data, error, isLoading, isError, isSuccess } = useGetProductsQuery()
+
+  console.log(data)
 
   const openNavMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -107,10 +111,14 @@ const Home = (props) => {
         </div>
 
         <div className={styles.featuredContainer}>
-          <FaSpinner
-            style={{ fontSize: '50px' }}
-            className={styles.loadingIcon}
-          />
+          {isLoading && (
+            <FaSpinner
+              style={{ fontSize: '50px' }}
+              className={styles.loadingIcon}
+            />
+          )}
+          {isError && <p>{error.message}</p>}
+          {isSuccess && data && data.map(product => <Product key={product.id} image={product.image} title={product.title} price={product.price}/>)}
         </div>
       </section>
     </>
