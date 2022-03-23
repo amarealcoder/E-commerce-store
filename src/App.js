@@ -1,4 +1,3 @@
-// import { ProductsProvider } from './store/ProductsContext';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 // import SignIn from './pages/SignIn';
