@@ -1,19 +1,12 @@
-import styles from './FilterList.module.css';
+// import styles from './FilterList.module.css';
+// import { NavLink } from 'react-router-dom';
 
-const FilterList = () => {
-    return (
-      <ul className={styles.list}>
-        <li>headphones</li>
-        <li>headband</li>
-        <li>earpods</li>
-        <li>headphones</li>
-        <li>headband</li>
-        <li>earpods</li>
-        <li>headphones</li>
-        <li>headband</li>
-        <li>earpods</li>
-      </ul>
-    );
-}
+// const FilterList = (props) => {
+//   return (
+//     <ul className={styles.filterListContainer} key={props.id}>
+//       <NavLink onClick={props.onClick}> {props.category}</NavLink>
+//     </ul>
+//   );
+// };
 
-export default FilterList;
+// export default FilterList;

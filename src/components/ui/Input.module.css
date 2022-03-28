@@ -2,9 +2,10 @@
   text-align: center;
 }
 .inputContainer input {
+
   border: 1px solid #bababa;
   border-radius: 10px;
-  padding: 12px 20%;
+  padding: 12px 12%;
   margin: 25px 0;
   background-image: url(../../images/search.png);
   padding-left: 40px;

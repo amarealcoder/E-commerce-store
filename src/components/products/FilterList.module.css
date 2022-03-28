@@ -1,16 +1,18 @@
-.list {
+.filterListContainer {
   display: flex;
+  flex-direction: row;
   overflow-x: scroll;
 }
 
-.list::-webkit-scrollbar {
+.filterListContainer::-webkit-scrollbar {
   width: 0px;
 }
 
-.list > li {
+.filterListContainer li {
   margin-top: 32px;
   list-style: none;
   padding: 0px 0px 0px 40px;
   color: #7f7f7f;
   font-size: 14px;
+  cursor: pointer;
 }

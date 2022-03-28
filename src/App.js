@@ -9,6 +9,7 @@ import Search from './pages/Search';
 // import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
 // import ShoppingCart from './components/ShoppingCart';
 import Profile from './pages/Profile';
+import SearchResults from './pages/SearchResults';
 // import ChangePassword from './components/profile/profileDetails/ChangePassword';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path='/profile'>
         <Profile />
+      </Route>
+      <Route path='/search-results'>
+        <SearchResults />
       </Route>
       {/* <Route path='/password-change'>
        <ChangePassword />
