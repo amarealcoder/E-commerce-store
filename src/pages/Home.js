@@ -1,28 +1,40 @@
 import styles from './Home.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGetProductsQuery } from '../services/productsApi';
 import { NavLink } from 'react-router-dom';
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
-import FilterList from '../components/products/FilterList';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
-import headSet from '../images/headset.png';
-import rightArrow from '../images/arrow-right.png';
 
-import { FaSpinner, FaTimes } from 'react-icons/fa';
+import { FaSpinner, FaTimes, FaArrowRight } from 'react-icons/fa';
+import useFilter from '../hooks/useFilter';
 
 const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { data, error, isLoading, isError, isSuccess } = useGetProductsQuery()
+  const [category, setCategory] = useState([]);
+  const [activeCategory, setActiveCategory] = useState('');
 
-  console.log(data)
+  const { data, error, isLoading, isError, isSuccess } = useGetProductsQuery();
+  const filteredCategory = useFilter(data, 'category');
 
-  const openNavMenu = () => {
+  const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleFilteredProducts = (category) => {
+    console.log(category)
+    const filteredProductsCategory =
+      isSuccess &&
+      data &&
+      data.filter((product) => product.category === category);
+    setCategory(filteredProductsCategory);
+
+    setActiveCategory(category);
+    console.log(activeCategory)
   };
 
   return (
@@ -30,12 +42,9 @@ const Home = (props) => {
       <section className={styles.homeContainer}>
         <nav className={styles.headerIcons}>
           {!isMenuOpen ? (
-            <img src={menuIcon} alt='menu icon' onClick={openNavMenu} />
+            <img src={menuIcon} alt='menu icon' onClick={handleOpenMenu} />
           ) : (
-            <FaTimes
-              // style={{ fontSize: '30px' }}
-              onClick={openNavMenu}
-            />
+            <FaTimes onClick={handleOpenMenu} />
           )}
 
           {isMenuOpen && (
@@ -43,9 +52,7 @@ const Home = (props) => {
               <NavLink to='/search' activeClassName={styles.isActive}>
                 Search
               </NavLink>
-              {/* <NavLink to='/products' activeClassName={styles.isActive}>
-                Products
-              </NavLink> */}
+
               <NavLink to='/profile' activeClassName={styles.isActive}>
                 Profile
               </NavLink>
@@ -67,58 +74,75 @@ const Home = (props) => {
       </section>
 
       <section className={styles.homeProdDisplay}>
-        <FilterList />
-
+        <ul className={styles.category}>
+          {isSuccess &&
+            data &&
+            filteredCategory.map((item, index) => (
+              <NavLink
+                activeClassName={
+                  activeCategory === item.category && styles.active
+                }
+                key={item.id}
+                to=''
+                onClick={() => handleFilteredProducts(item.category)}
+              >
+                {item.category}
+              </NavLink>
+            ))}
+        </ul>
         <div className={styles.prodContainer}>
-          <div className={styles.prodList}>
-            <div className={styles.prodDesc}>
-              <h2>TMA-2 Modular Headphone</h2>
-              <div className={styles.shopNow}>
-                <a href=''>
-                  Shop now
-                  <span>
-                    <img src={rightArrow} />
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div className={styles.prodImage}>
-              <img src={headSet} alt='a black headphone' />
-            </div>
-          </div>
+          {isSuccess &&
+            data &&
+            category.map((product) => (
+              <div key={product.id} className={styles.prodList}>
+                <div className={styles.prodDesc}>
+                  <h2>{product.title}</h2>
+                  <div className={styles.shopNow}>
+                    <NavLink to='/'>
+                      Shop now
+                      <FaArrowRight
+                        style={{ marginLeft: '10px', marginTop: '-5px' }}
+                      />
+                    </NavLink>
+                  </div>
+                </div>
 
-          <div className={styles.prodList}>
-            <div className={styles.prodDesc}>
-              <h2>TMA-2 Modular Headphone</h2>
-              <div className={styles.shopNow}>
-                <a href=''>
-                  Shop now
-                  <span>
-                    <img src={rightArrow} />
-                  </span>
-                </a>
+                <div className={styles.prodImage}>
+                  <img src={product.image} alt={product.title} />
+                </div>
               </div>
-            </div>
-            <div className={styles.prodImage}>
-              <img src={headSet} alt='a black headphone' />
-            </div>
-          </div>
+            ))}
         </div>
 
         <div className={styles.featured}>
           <p>Featured Products</p>
-          <a href=''>See all</a>
+          <span>
+            <NavLink to='/search-results'>See all</NavLink>
+          </span>
         </div>
 
         <div className={styles.featuredContainer}>
           {isLoading && (
-            <FaSpinner
-              style={{ fontSize: '50px' }}
-              className={styles.loadingIcon}
-            />
+            <span>
+              <FaSpinner
+                style={{
+                  fontSize: '50px'
+                }}
+                className={styles.loadingIcon}
+              />
+            </span>
           )}
           {isError && <p>{error.message}</p>}
-          {isSuccess && data && data.map(product => <Product key={product.id} image={product.image} title={product.title} price={product.price}/>)}
+          {isSuccess &&
+            data &&
+            data.map((product) => (
+              <Product
+                key={product.id}
+                image={product.image}
+                title={product.title}
+                price={product.price}
+              />
+            ))}
         </div>
       </section>
     </>
@@ -126,82 +150,3 @@ const Home = (props) => {
 };
 
 export default Home;
-
-/* const Navbar = () => {
-  const [navOpen, setNavOpen] = useState(false);
-
-  const openNav = () => {
-    setNavOpen(!navOpen)
-  }
-
- 
-
-  return (
-    <aside className={styles.aside}>
-      <div className={styles.logoContainer}>
-        <img src={logo} alt='logo' />
-
-        {!navOpen ? (
-          <FaAlignJustify
-            style={{ fontSize: '30px', color: '#fff' }}
-            onClick={openNav}
-            className={styles.toggleIcon}
-          />
-        ) : (
-          <FaTimes
-           
-            onClick={openNav}
-            className={styles.toggleIcon}
-          />
-        )}
-      </div>
-
-      <div className={`${!navOpen && styles.asideContent}`}>
-        <div className={styles.asideWallet}>
-          <div className={styles.asideWalletContainer}>
-            <div className={styles.asideWalletContent}>
-              <div className={styles.asideWalletImg}>
-                <img src={wallet} alt='wallet' />
-              </div>
-              <div className={styles.asideWalletBallanceContainer}>
-                <p>Wallet Balance</p>
-                <p className={styles.asideWalletAmount}>$15,001.00</p>
-              </div>
-            </div>
-            <AiFillEye color={'fff'} />
-          </div>
-          <hr />
-
-          <div className={styles.asideWalletContainer}>
-            <div className={styles.asideWalletContent}>
-              <div className={styles.asideWalletImg}>
-                <AiTwotoneStar
-                  style={{
-                    color: '#F59E0B',
-                    textAlign: 'center',
-                    marginTop: '4px',
-                  }}
-                />
-              </div>
-              <div className={styles.asideWalletBallanceContainer}>
-                <p>Awarded Points</p>
-                <p className={styles.asideWalletAmount}>35</p>
-              </div>
-            </div>
-          </div>
-          <hr />
-
-          <div className={styles.actionButtons}>
-            <button className={styles.btn1}>Pay-In</button>
-            <button className={styles.btn2}>Pay-Out</button>
-          </div>
-        </div>
-
-        <NavContainer />
-        <AsideCard />
-      </div>
-    </aside>
-  );
-};
-
-export default Navbar;*/
