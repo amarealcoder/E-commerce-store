@@ -1,4 +1,4 @@
-import styles from './ProductsDetailOverview.module.css';
+import styles from './ProductDetailOverview.module.css';
 
 import ProductsHeader from '../components/products/ProductsHeader';
 import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
