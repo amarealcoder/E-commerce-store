@@ -1,7 +1,9 @@
 import styles from './Home.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useHistory, NavLink } from 'react-router-dom';
+
 import { useGetProductsQuery } from '../services/productsApi';
-import { NavLink } from 'react-router-dom';
+
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
@@ -17,6 +19,8 @@ const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [category, setCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
+  
+  const history = useHistory();
 
   const { data, error, isLoading, isError, isSuccess } = useGetProductsQuery();
   const filteredCategory = useFilter(data, 'category');
@@ -34,8 +38,11 @@ const Home = (props) => {
     setCategory(filteredProductsCategory);
 
     setActiveCategory(category);
-    console.log(activeCategory)
+    
   };
+  const handleRedirect = (id) => {
+    history.push('/product-overview');
+  }
 
   return (
     <>
@@ -69,7 +76,7 @@ const Home = (props) => {
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
-          <Input />
+          <Input onFocus={() => history.push('/search')} placeholder={'Search something'} data={data}/>
         </div>
       </section>
 
@@ -126,7 +133,7 @@ const Home = (props) => {
             <span>
               <FaSpinner
                 style={{
-                  fontSize: '50px'
+                  fontSize: '50px',
                 }}
                 className={styles.loadingIcon}
               />
@@ -135,12 +142,13 @@ const Home = (props) => {
           {isError && <p>{error.message}</p>}
           {isSuccess &&
             data &&
-            data.map((product) => (
+            data.slice(0, 5).map((product) => (
               <Product
                 key={product.id}
                 image={product.image}
                 title={product.title}
                 price={product.price}
+                onClick={() => handleRedirect(product.id)}
               />
             ))}
         </div>

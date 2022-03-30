@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './SearchResults.module.css';
-import Product from '../components/products/Product';
+import { useGetProductsQuery } from '../services/productsApi';
 
+import Product from '../components/products/Product';
 import ProductsHeader from '../components/products/ProductsHeader';
 
 import filter from '../images/sliders.png';
 import Rating from '../components/ui/Rating';
 
 const SearchResults = () => {
+  
   return (
     <div>
       <section className={styles.container1}>

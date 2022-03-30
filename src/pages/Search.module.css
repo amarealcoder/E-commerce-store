@@ -1,5 +1,11 @@
 .searchContainer {
   margin: 60px 24px;
+  width: 3
+  40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .searchInputSection .searchHeader {
@@ -19,14 +25,14 @@
 }
 .searchResult .prodTitle {
   flex: none;
-  /* order: 1; */
   flex-grow: 1;
   margin: 0px 10px;
   font-size: 14px;
 }
 .popularTitle {
   font-size: 16px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  margin: 20px 0px;
 }
 
 .popularProducts .popularProdContainer {
@@ -60,15 +66,15 @@
 }
 
 @media (min-width: 600px) {
-  .popularProducts {
-    display: flex;
-    flex-wrap: wrap;
+  /* .popularProducts { */
+    /* display: flex;
+    flex-wrap: wrap; */
     /* text-align: center; */
-  }
-  .popularTitle {
+  /* } */
+  /* .popularTitle { */
     /* display: flex;
    justify-content: center;
    align-items: center; */
-    text-align: center;
-  }
+    /* text-align: center; */
+  /* } */
 }
