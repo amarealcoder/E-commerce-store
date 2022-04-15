@@ -1,9 +1,8 @@
 import styles from './Home.module.css';
 import { useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
-
 import { useGetProductsQuery } from '../services/productsApi';
-
+import useFilter from '../hooks/useFilter';
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
@@ -11,15 +10,13 @@ import Input from '../components/ui/Input';
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
-
 import { FaSpinner, FaTimes, FaArrowRight } from 'react-icons/fa';
-import useFilter from '../hooks/useFilter';
 
 const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [category, setCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
-  
+
   const history = useHistory();
 
   const { data, error, isLoading, isError, isSuccess } = useGetProductsQuery();
@@ -30,7 +27,6 @@ const Home = (props) => {
   };
 
   const handleFilteredProducts = (category) => {
-    console.log(category)
     const filteredProductsCategory =
       isSuccess &&
       data &&
@@ -38,11 +34,15 @@ const Home = (props) => {
     setCategory(filteredProductsCategory);
 
     setActiveCategory(category);
-    
   };
-  const handleRedirect = (id) => {
-    history.push('/product-overview');
-  }
+
+  // const handleRedirect = (id) => {
+  //   history.push(`/${id}`);
+  // };
+
+  // const handleRedirectToFilter = (id) => {
+  //   history.push(`/search-results/${id}`);
+  // };
 
   return (
     <>
@@ -76,7 +76,11 @@ const Home = (props) => {
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
-          <Input onFocus={() => history.push('/search')} placeholder={'Search something'} data={data}/>
+          <Input
+            onFocus={() => history.push('/search')}
+            placeholder={'Search something'}
+            data={data}
+          />
         </div>
       </section>
 
@@ -84,10 +88,10 @@ const Home = (props) => {
         <ul className={styles.category}>
           {isSuccess &&
             data &&
-            filteredCategory.map((item, index) => (
+            filteredCategory.map((item) => (
               <NavLink
-                activeClassName={
-                  activeCategory === item.category && styles.active
+                className={() =>
+                  activeCategory === item.category ? styles.active : ''
                 }
                 key={item.id}
                 to=''
@@ -105,10 +109,14 @@ const Home = (props) => {
                 <div className={styles.prodDesc}>
                   <h2>{product.title}</h2>
                   <div className={styles.shopNow}>
-                    <NavLink to='/'>
+                    <NavLink to={`/${product.id}`}>
                       Shop now
                       <FaArrowRight
-                        style={{ marginLeft: '10px', marginTop: '-5px' }}
+                        style={{
+                          marginLeft: '10px',
+                          bottom: '-3px',
+                          position: 'relative',
+                        }}
                       />
                     </NavLink>
                   </div>
@@ -142,15 +150,17 @@ const Home = (props) => {
           {isError && <p>{error.message}</p>}
           {isSuccess &&
             data &&
-            data.slice(0, 5).map((product) => (
-              <Product
-                key={product.id}
-                image={product.image}
-                title={product.title}
-                price={product.price}
-                onClick={() => handleRedirect(product.id)}
-              />
-            ))}
+            data
+              .slice(0, 5)
+              .map((product) => (
+                <Product
+                  key={product.id}
+                  image={product.image}
+                  title={product.title}
+                  price={product.price}
+                  // onClick={() => handleRedirect(product.id)}
+                />
+              ))}
         </div>
       </section>
     </>

@@ -1,4 +1,3 @@
-
 import { Switch, Route, Redirect } from 'react-router-dom';
 // import SignIn from './pages/SignIn';
 import Home from './pages/Home';
@@ -18,56 +17,19 @@ function App() {
       <Route exact path='/'>
         <Home />
       </Route>
-      <Route path='/search'>
+      <Route exact path='/search'>
         <Search />
-      </Route>
-      <Route path='/profile'>
-        <Profile />
       </Route>
       <Route path='/search-results'>
         <SearchResults />
       </Route>
-       <Route path='/product-overview'>
-       <ProductDetailOverview />
+      <Route path='/:productId'>
+        <ProductDetailOverview />
       </Route>
-      {/* <Route path='/password-change'>
-       <ChangePassword />
-      </Route> */}
-      {/* <Route >
-        <ChangePassword />
-</Route> */}
+      <Route path='/profile'>
+        <Profile />
+      </Route>
     </Switch>
-    // <Switch>
-    //    <Route path='sign-in'>
-    //       <SignIn />
-    //  </Route>
-
-    //
-    //     <Route path='/' exact>
-    //       <Home />
-    //     </Route>
-    //     <Route path='/search'>
-    //       <Search />
-    //     </Route>
-    //     <Route path='/search-results'>
-    //       <SearchResults />
-    //     </Route>
-    //     <Route path='/modal'>
-    //       <FilterModal />
-    //     </Route>
-    //     <Route path='/product-overview'>
-    //       <ProductsDetailOverview />
-    //     </Route>
-    //     <Route path='/product-specification'>
-    //       <ProductsDetailSpecification />
-    //     </Route>
-    //     <Route path='/cart'>
-    //       <ShoppingCart />
-    //     </Route>
-    //     <Route path='/profile'>
-    //       <Profile />
-    //     </Route>
-    // </Switch>
   );
 }
 

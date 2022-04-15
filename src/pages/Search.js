@@ -13,7 +13,7 @@ import cancel from '../images/x.png';
 // import headset from '../images/headset.png';
 
 const Search = (props) => {
-  const histroy = useHistory();
+  const history = useHistory();
   const { data, isSuccess, error, isError } = useGetProductsQuery();
   const [searchFilter, setSearchFilter] = useState([]);
   const [latestSearch, setLatestSearch] = useState([]);
@@ -32,14 +32,15 @@ const Search = (props) => {
       setSearchFilter(filteredSearchResults);
     }
   };
-  const handleProductsDisplay = (title) => {
-    console.log(title)
-    let newArray = new Array(title);
-    
-    console.log(newArray);
-    setLatestSearch(newArray)
-    history.push('/product-overview');
-}
+  const handleLatestSearch = (id) => {
+    console.log(id)
+  
+    const latestSearch = isSuccess && data && data.filter(product => product.id === id)
+    console.log(latestSearch)
+    setLatestSearch(latestSearch);
+
+    history.push(`/search/${id}`);
+  };
   return (
     <div className={styles.searchContainer}>
       <section className={styles.searchInputSection}>
@@ -55,17 +56,18 @@ const Search = (props) => {
         </div>
       </section>
 
-      {/* {latestSearch &&
-        latestSearch.map((title) => ( */}
-          <section className={styles.searchResult}>
-            <p className={styles.searchTitle}>Latest search</p>
-            <div>
-              <img src={clock} />
-              <p className={styles.prodTitle}>kkk</p>
-              <img src={cancel} />
-            </div>
-          </section>
-        {/* ))} */}
+     
+      <section className={styles.searchResult}>
+        <p className={styles.searchTitle}>Latest search</p>
+        {latestSearch.map((search) => (
+          <div>
+            <img src={clock} />
+            <p className={styles.prodTitle}>{search.title}</p>
+            <img src={cancel} />
+          </div>
+        ))}
+      </section>
+      
 
       {searchFilter.length !== 0 && (
         <section className={styles.popularProducts}>
@@ -73,7 +75,7 @@ const Search = (props) => {
           {searchFilter.map((product) => (
             <div
               key={product.id}
-              onClick={() => handleProductsDisplay(product)}
+              onClick={() => handleLatestSearch(product.id)}
               className={styles.popularProdContainer}
             >
               <div className={styles.prodImageContainer}>

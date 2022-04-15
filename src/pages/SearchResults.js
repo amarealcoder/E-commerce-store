@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './SearchResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
 
@@ -9,12 +10,16 @@ import filter from '../images/sliders.png';
 import Rating from '../components/ui/Rating';
 
 const SearchResults = () => {
-  
+  const { data, isSuccess } = useGetProductsQuery();
+  console.log(useParams())
+  const { productId } = useParams()
+  console.log(productId);
   return (
     <div>
+      {productId}
       <section className={styles.container1}>
         <ProductsHeader />
-
+        
         <div className={styles.title}>
           <p>Headphone</p>
           <h3>TMA-2 Wireless</h3>

@@ -2,6 +2,7 @@
 
 .titleBadge {
   height: 98px;
+  /* width: 30px; */
   margin-left: 24px;
   margin-right: 50px;
 }
@@ -15,13 +16,21 @@
   color: #0acf83;
 }
 
-.titleBadge h2 {
-  width: 327px;
-  height: 72px;
-  top: 26px;
+.titleBadge h5 {
+  margin-top: 5px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 18px;
+  line-height: 22px;
+}
+@media (min-width: 600px) {
+  .titleBadge{
+     width: 327px;
+    height: 72px;
+  }
+  .titleBadge h5 {
   line-height: 36px;
+    font-size: 28px;
+  }
 }

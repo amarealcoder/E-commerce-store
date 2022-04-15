@@ -1,21 +1,37 @@
 import styles from './ProductDetailOverview.module.css';
+import { useParams, useHistory } from 'react-router-dom';
+import { useGetProductsQuery } from '../services/productsApi';
 
 import ProductsHeader from '../components/products/ProductsHeader';
 import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
 import ProductDetailNav from '../components/products/ProductDetailNav';
-
 import headSet from '../images/headset.png';
 import Comments from '../components/ui/Comments';
 import Product from '../components/products/Product';
 import Button from '../components/ui/Button';
 
 const ProductsDetailOverview = () => {
+  const { data, isSuccess, isLoading, isError, error } = useGetProductsQuery();
+  const history = useHistory();
+  const { productId } = useParams();
+
   return (
     <div className={styles.overview}>
       <section>
-        <ProductsHeader />
-        <ProductsTitleBadge />
-        <ProductDetailNav />
+        {isSuccess &&
+          data &&
+          data
+            .filter((product) => product.id === Number(productId))
+            .map((product) => (
+              <div key={product.id}>
+                <ProductsHeader onClick={() => history.push('/')}/>
+                <ProductsTitleBadge
+                  price={product.price}
+                  title={product.title}
+                />
+                <ProductDetailNav />
+              </div>
+            ))}
       </section>
       <section className={styles.productImages}>
         <img src={headSet} alt='' />
