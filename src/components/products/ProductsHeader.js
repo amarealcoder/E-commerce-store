@@ -3,10 +3,10 @@ import styles from './ProductsHeader.module.css';
 import chevronRight from '../../images/chevron-left.png';
 import cart from '../../images/shopping-cart.png';
 
-const ProductsHeader = () => {
+const ProductsHeader = (props) => {
     return (
       <header className={styles.headerContainer}>
-        <img src={chevronRight} alt='a right angle' />
+        <img onClick={props.onClick} src={chevronRight} alt='a right angle' />
         <img src={cart} />
       </header>
     );

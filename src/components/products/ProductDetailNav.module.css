@@ -4,6 +4,7 @@
   align-items: center;
   text-align: center;
   margin-right: 50px;
+   margin-top: 30px;
 }
 
 .nav li {
@@ -11,4 +12,9 @@
   height: 33px;
   list-style: none;
   /* margin: 0px 34px; */
+}
+@media(min-width: 600px){
+  .nav{
+    margin-top: 70px;
+  }
 }

@@ -14,8 +14,8 @@ const Comments = () => {
           <span>I month ago</span>
         </div>
         <div className={styles.starRating}>
-          {[...Array(5)].map((star) => {
-            return <img src={Star} className={styles.star} />;
+          {[...Array(5)].map((star, index) => {
+            return <img src={Star} key={index} className={styles.star} />;
           })}
         </div>
         <p className={styles.comment}>
@@ -32,8 +32,8 @@ const Comments = () => {
           <span>I month ago</span>
         </div>
         <div className={styles.starRating}>
-          {[...Array(5)].map((star) => {
-            return <img src={Star} className={styles.star} />;
+          {[...Array(5)].map((star, index) => {
+            return <img src={Star} key={index} className={styles.star} />;
           })}
         </div>
         <p className={styles.comment}>
@@ -50,8 +50,8 @@ const Comments = () => {
           <span>I month ago</span>
         </div>
         <div className={styles.starRating}>
-          {[...Array(5)].map((star) => {
-            return <img src={Star} className={styles.star} />;
+          {[...Array(5)].map((star, index) => {
+            return <img src={Star} key={index} className={styles.star} />;
           })}
         </div>
         <p className={styles.comment}>

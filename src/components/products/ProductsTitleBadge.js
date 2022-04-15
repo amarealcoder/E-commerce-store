@@ -1,9 +1,9 @@
 import styles from './ProductsTitleBadge.module.css';
 
-const ProductsTitleBadge = () => {
+const ProductsTitleBadge = (props) => {
     return <div className={styles.titleBadge}>
-        <p>USD 350</p>
-        <h2>TMA-2 HD WIRELESS</h2>
+        <p>USD {props.price}</p>
+        <h5>{props.title}</h5>
     </div>
 }
 export default ProductsTitleBadge;
