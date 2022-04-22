@@ -1,5 +1,5 @@
 import styles from './ProductDetailOverview.module.css';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 
 import ProductsHeader from '../components/products/ProductsHeader';
@@ -29,15 +29,17 @@ const ProductsDetailOverview = () => {
                   price={product.price}
                   title={product.title}
                 />
-                <ProductDetailNav />
+                {/* <ProductDetailNav onClick={() => history.push(`/${productId}/specification`)}/> */}
+                <ul className={styles.nav}>
+                  <NavLink to={`/${productId}/specification`}>Overview</NavLink>
+                  <NavLink to={`/${productId}/specification`}>Features</NavLink>
+                  <NavLink to={`/${productId}/specification`}>Specification</NavLink>
+                </ul>
+                <img src={product.image} alt='' />
               </div>
             ))}
       </section>
-      <section className={styles.productImages}>
-        <img src={headSet} alt='' />
-        <img src={headSet} alt='' />
-        <img src={headSet} alt='' />
-      </section>
+    
       <section className={styles.reviewsContainer}>
         <p>Reviews (120)</p>
         <Comments />
@@ -49,10 +51,7 @@ const ProductsDetailOverview = () => {
           <p className={styles.more}>See All</p>
         </div>
         <div className={styles.otherProductsImg}>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+        {isSuccess && data && data.map(product => <Product key={product.id} image={product.image} price={product.price} title={product.title}/>)}
         </div>
       </section>
       <div className={styles.actionBtn}>

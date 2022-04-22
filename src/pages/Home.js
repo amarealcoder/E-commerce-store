@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
@@ -25,7 +25,6 @@ const Home = (props) => {
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   const handleFilteredProducts = (category) => {
     const filteredProductsCategory =
       isSuccess &&
@@ -35,14 +34,6 @@ const Home = (props) => {
 
     setActiveCategory(category);
   };
-
-  // const handleRedirect = (id) => {
-  //   history.push(`/${id}`);
-  // };
-
-  // const handleRedirectToFilter = (id) => {
-  //   history.push(`/search-results/${id}`);
-  // };
 
   return (
     <>

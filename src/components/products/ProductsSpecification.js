@@ -1,19 +1,20 @@
 import styles from './ProductsSpecification.module.css';
+import React from 'react';
 
-import headSet from '../../images/headset.png';
+const ProductsSpecification = (props) => {
 
-const ProductsSpecification = () => {
   return (
     <div className={styles.productsContainer}>
-      <img src={headSet} alt='' />
+      <img src={props.image} alt={props.title} />
       <div>
-        <p className={styles.productsTitle}>APTX hd Wireless audio</p>
+        <p className={styles.productsTitle}>{props.title}</p>
         <p>
-          The Aptx® HD codec transmits 24-bit hi-res audio, equal to or better
-          than CD quality.
+          {props.description}
         </p>
       </div>
     </div>
+      
   );
 };
 export default ProductsSpecification;
+
