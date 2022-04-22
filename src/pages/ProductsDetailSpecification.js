@@ -1,36 +1,37 @@
 import styles from './ProductsDetailSpecification.module.css';
-
+import React from 'react';
 import ProductsHeader from '../components/products/ProductsHeader';
 import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
-import ProductDetailNav from '../components/products/ProductDetailNav';
 import ProductsSpecification from '../components/products/ProductsSpecification';
 import Button from '../components/ui/Button';
+import { useGetProductsQuery } from '../services/productsApi';
+import { useParams, useHistory } from 'react-router-dom';
 
 const ProductsDetailSpecification = () => {
+  const { isSuccess, data } = useGetProductsQuery();
+  const { productId } = useParams();
+  const  history = useHistory();
+
   return (
     <div className={styles.productsSpecification}>
+      
+      {isSuccess && data && data.filter(product => +productId === product.id)
+      .map(product => <React.Fragment key={product.id}>
       <section>
-        <ProductsHeader />
-        <ProductsTitleBadge />
-        <ProductDetailNav />
+        <ProductsHeader onClick={() => history.push(`/${productId}`)}/>
+        <ProductsTitleBadge title={product.title} />
       </section>
       <section className={styles.productFeatures}>
-        <p className={styles.title}>Highly Detailed Audio</p>
+        <p className={styles.title}>{product.title}</p>
         <p>
-          The speaker unit contains a diaphragm that is precision-grown from NAC
-          Audio bio-cellulose, making it stiffer, lighter and stronger than
-          regular PET speaker units, and allowing the sound-producing diaphragm
-          to vibrate without the levels of distortion found in other speakers.
+          {product.description}
         </p>
-        <br />
-        <p>
-          The speaker unit contains a diaphragm that is precision-grown from NAC
-          Audio bio-cellulose, making it stiffer, lighter and stronger than
-          regular PET speaker units, and allowing the sound-producing diaphragm
-          to vibrate without the levels of distortion found in other speakers.
-        </p>
-        <ProductsSpecification />
+       
+        <ProductsSpecification title={product.title} image={product.image} description={product.description}/>
       </section>
+      </React.Fragment>)}
+      
+      
       <div className={styles.action}>
         <Button>Add to cart</Button>
       </div>

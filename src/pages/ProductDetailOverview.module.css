@@ -32,6 +32,23 @@
   text-align: center;
   font-size: 14px;
 }
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-right: 50px;
+   margin-top: 30px;
+}
+
+.nav li {
+  width: 70px;
+  height: 33px;
+  list-style: none;
+  /* margin: 0px 34px; */
+}
+
 .otherProducts {
   background-color: #f6f6f6;
   width: 100%;
@@ -75,6 +92,11 @@
     align-items: center;
     justify-content: center;
   }
+  
+  .nav{
+    margin-top: 70px;
+  }
+
   .actionBtn {
     top: 110rem;
     left: 30px;

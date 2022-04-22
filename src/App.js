@@ -9,6 +9,8 @@ import ProductDetailOverview from './pages/ProductDetailOverview';
 // import ShoppingCart from './components/ShoppingCart';
 import Profile from './pages/Profile';
 import SearchResults from './pages/SearchResults';
+import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
+// import ProductsSpecification from './components/products/ProductsSpecification';
 // import ChangePassword from './components/profile/profileDetails/ChangePassword';
 
 function App() {
@@ -17,18 +19,22 @@ function App() {
       <Route exact path='/'>
         <Home />
       </Route>
+      <Route path='/profile'>
+        <Profile />
+      </Route>
       <Route exact path='/search'>
         <Search />
       </Route>
       <Route path='/search-results'>
         <SearchResults />
       </Route>
+      <Route path='/:productId/specification'>
+        <ProductsDetailSpecification />
+      </Route>
       <Route path='/:productId'>
         <ProductDetailOverview />
       </Route>
-      <Route path='/profile'>
-        <Profile />
-      </Route>
+      
     </Switch>
   );
 }
