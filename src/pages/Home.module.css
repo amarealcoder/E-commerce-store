@@ -99,7 +99,7 @@ a.isActive {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   line-height: 30px;
-  width: 250px;
+  width: 200px;
   height: auto;
 }
 .homeProdDisplay .shopNow {
@@ -110,8 +110,8 @@ a.isActive {
   color: #16c782;
 }
 .homeProdDisplay img {
-  height: 117px;
-  width: 130px;
+  height: 80px;
+  width: 80px;
 }
 .homeProdDisplay .featured {
   margin: 20px 30px;

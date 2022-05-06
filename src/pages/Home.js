@@ -12,7 +12,7 @@ import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
 import { FaSpinner, FaTimes, FaArrowRight } from 'react-icons/fa';
 
-const Home = (props) => {
+const Home = (props) => {  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [category, setCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
@@ -27,13 +27,15 @@ const Home = (props) => {
   };
   const handleFilteredProducts = (category) => {
     const filteredProductsCategory =
-      isSuccess &&
-      data &&
-      data.filter((product) => product.category === category);
+      isSuccess && data?.filter((product) => product.category === category);
     setCategory(filteredProductsCategory);
 
     setActiveCategory(category);
   };
+
+  useEffect(() => {
+    isSuccess && handleFilteredProducts(filteredCategory[0].category);
+  }, [isSuccess]);
 
   return (
     <>
