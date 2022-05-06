@@ -27,13 +27,14 @@ const ProductsDetailOverview = () => {
                   price={product.price}
                   title={product.title}
                 />
-                {/* <ProductDetailNav onClick={() => history.push(`/${productId}/specification`)}/> */}
                 <ul className={styles.nav}>
                   <NavLink to={`/${productId}/specification`}>Overview</NavLink>
                   <NavLink to={`/${productId}/specification`}>Features</NavLink>
                   <NavLink to={`/${productId}/specification`}>Specification</NavLink>
                 </ul>
-                <img src={product.image} alt='' />
+                <div className={styles.overviewImageContainer}>
+                  <img className={styles.overviewImg} src={product.image} alt='' />
+                </div>
               </div>
             ))}
       </section>

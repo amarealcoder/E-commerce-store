@@ -2,35 +2,36 @@
 
 .titleBadge {
   height: 98px;
-  /* width: 30px; */
   margin-left: 24px;
   margin-right: 50px;
 }
-
 .titleBadge p {
-  width: 68px;
   height: 20px;
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
   color: #0acf83;
+  margin-bottom: 3px;
 }
-
 .titleBadge h5 {
-  margin-top: 5px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 22px;
 }
+
 @media (min-width: 600px) {
   .titleBadge{
-     width: 327px;
+    width: 327px;
     height: 72px;
   }
   .titleBadge h5 {
-  line-height: 36px;
+    line-height: 36px;
     font-size: 28px;
+  }
+
+  .titleBadge p {
+    font-size: 26px;
   }
 }
