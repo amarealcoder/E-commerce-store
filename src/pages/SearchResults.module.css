@@ -29,6 +29,7 @@
 
 .container1 button > img {
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .container1 .filterContainer ul {
@@ -43,6 +44,7 @@
   font-weight: 400px;
   list-style: none;
   margin: 0px 25px;
+  cursor: pointer;
 }
 
 .container2 {
@@ -61,4 +63,16 @@
 .container2 .rating{
   margin: 0 0 15px 50px
   
+}
+.loadingIcon {
+  animation: spin 1s infinite linear;
+  text-align: center;
+}
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
 }

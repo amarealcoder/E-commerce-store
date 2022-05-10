@@ -1,51 +1,80 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory} from 'react-router-dom';
 import styles from './SearchResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
+import useFilter from '../hooks/useFilter';
 
 import Product from '../components/products/Product';
 import ProductsHeader from '../components/products/ProductsHeader';
 
 import filter from '../images/sliders.png';
 import Rating from '../components/ui/Rating';
+import FilterModal from './FilterModal';
+import { FaSpinner } from 'react-icons/fa';
 
 const SearchResults = () => {
-  const { data, isSuccess } = useGetProductsQuery();
-  console.log(useParams())
-  const { productId } = useParams()
-  console.log(productId);
+  const history = useHistory(); 
+  const [isOpen, setIsOpen] = useState(false);
+  const { data, isSuccess, isLoading } = useGetProductsQuery();
+  const [filtered, setFiltered] = useState([]);
+  const filteredCategory = useFilter(data, 'category')
+  const [pageTitle, setPageTitle] = useState('');
+  const [pageCategory, setPageCategory] = useState('')
+
+  const handleFilter = (category, title) => {
+    const filteredCategory = isSuccess && data?.filter(item => item.category === category);
+    setFiltered(filteredCategory);
+    setPageTitle(title)
+    setPageCategory(category)
+  } 
+
+  useEffect(() => {
+    isSuccess && handleFilter(filteredCategory.category)
+    setFiltered(data);
+    setPageTitle(pageTitle)
+    setPageCategory(pageCategory)
+  }, [isSuccess])
+
   return (
     <div>
-      {productId}
+      {isOpen && <FilterModal  setIsOpen={setIsOpen} />}
       <section className={styles.container1}>
-        <ProductsHeader />
+        <ProductsHeader onClick={() => history.push('/')} />
         
         <div className={styles.title}>
-          <p>Headphone</p>
-          <h3>TMA-2 Wireless</h3>
+          <p>{isSuccess && pageCategory}</p>
+          <h3>{isSuccess && pageTitle}</h3>
         </div>
         <div className={styles.filterContainer}>
-          <button>
-            <img src={filter} alt='' />
+          <button onClick={() => setIsOpen(true)}>
+            <img src={filter} alt='filter icon' />
             Filter
           </button>
           <ul>
-            <li>Popularity</li>
-            <li>Newest</li>
-            <li>Most Expensive</li>
-            <li>Popularity</li>
-            <li>Newest</li>
-            <li>Most Expensive</li>
+            {isSuccess && filteredCategory.map(item => <li key={item.id} onClick={() => handleFilter(item.category, item.title)}>{item.category}
+            </li>)}
           </ul>
         </div>
       </section>
 
       <section className={styles.container2}>
-        <Product>
+        {isLoading && (
+            <span>
+              <FaSpinner
+                style={{
+                  fontSize: '50px',
+                  position: 'absolute',
+                  left: '50%'
+                }}
+                className={styles.loadingIcon}
+              />
+            </span>
+          )}
+        {isSuccess && data && filtered?.map(item => <Product key={item.id} image={item.image} title={item.title} price={item.price}>
           <div className={styles.rating}>
-            <Rating />
+            <Rating rating={item.rating.rate} count={item.rating.count}/>
           </div>
-        </Product>
+        </Product>)}
       </section>
     </div>
   );

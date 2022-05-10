@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
 // import SearchResults from './pages/SearchResults';
-// import FilterModal from './pages/FilterModal';
+import FilterModal from './pages/FilterModal';
 import ProductDetailOverview from './pages/ProductDetailOverview';
 // import ProductsDetailSpecification from './pages/ProductsDetailSpecification';
 // import ShoppingCart from './components/ShoppingCart';
@@ -34,7 +34,6 @@ function App() {
       <Route path='/:productId'>
         <ProductDetailOverview />
       </Route>
-      
     </Switch>
   );
 }
