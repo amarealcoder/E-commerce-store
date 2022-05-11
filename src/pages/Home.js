@@ -135,6 +135,8 @@ const Home = (props) => {
               <FaSpinner
                 style={{
                   fontSize: '50px',
+                  position: 'absolute',
+                  left: '50%'
                 }}
                 className={styles.loadingIcon}
               />

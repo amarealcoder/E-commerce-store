@@ -147,13 +147,11 @@ a.isActive {
 
 @media (min-width: 600px) {
   .homeProdDisplay .category {
-  padding: 0;
-}
-
+    padding: 0;
+  }
   .homeProdDisplay .featured {
     justify-content: space-around;
   }
-
   .homeProdDisplay .featuredContainer {
     margin-left: 5rem;
   }
