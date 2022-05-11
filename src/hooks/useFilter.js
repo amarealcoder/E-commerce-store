@@ -1,4 +1,3 @@
-import React from 'react';
 import { useGetProductsQuery } from '../services/productsApi';
 
 export default function useFilter(arr, comp) {
@@ -20,11 +19,3 @@ export default function useFilter(arr, comp) {
 
   return unique;
 }
-
-// export default function useFilterProducts(arr, id){
-//   const { data, isSuccess } = useGetProductsQuery();
-
-//   const filteredProducts = isSuccess && data && data.filter((product, id) => {
-//     product === product.id
-//   })
-// }
