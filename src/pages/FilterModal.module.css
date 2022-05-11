@@ -1,18 +1,33 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: #000000bf;
+  
+}
 .modalContainer {
+  overflow: hidden; 
+  position: fixed;
   padding: 24px;
-  margin-left: 24px;
-  height: 524px;
+  left: 10%;
+  top: 10px;
+  width: 80%;
+  height: 700px;
   background: #ffffff;
   border-radius: 30px 30px 0px 0px;
-  width: 80%;
   z-index: 100;
-  overflow: hidden;
 }
 .modalContainer header {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  margin: 15px 0px;
+  margin: 5px 0px;
+}
+.modalContainer .cancel{
+cursor: pointer;
 }
 .modalContainer body {
   margin-top: -20px;
@@ -22,12 +37,32 @@
   position: relative;
   top: 20px;
 }
+.filteredCategoryContainer{
+  display: flex;
+  overflow-x: scroll;
+  align-items: center;
+}
+.filteredCategoryContainer::-webkit-scrollbar{
+  display: none;
+}
+.filteredCategoryContainer span{
+  margin: 10px 5%;
+  color: #7F7F7F;
+  padding: 10px;
+  cursor: pointer;
+}
+.filteredCategoryContainer span.active{
+  background-color: #0ACF83;
+  border-radius: 30%;
+  color: #fffd;
+  /* text-align: center; */
+}
 .sortContainer {
   margin: 15px 0;
 }
 .sortP {
   font-size: 16px;
-  margin-bottom: 5px;
+  margin: 5px 5px;
 }
 .sortContent {
   display: flex;
@@ -53,20 +88,20 @@
   margin-bottom: 10px;
 }
 .rangeContent {
-  display: flex;
-  justify-content: space-between;
+  display: block;
 }
 .rangeContainer input {
   display: flex;
   align-items: center;
   padding: 0px 15px;
-  width: 130px;
+  width: 60%;
+  text-align: center;
   height: 45px;
   background: #ffffff;
   border: 1px solid #bababa;
   box-sizing: border-box;
   border-radius: 10px;
-  margin: 0px 8px;
+  margin: 8px 8px;
 }
 .rangeContainer input:focus {
   outline: 2px solid #0ACF83;
@@ -77,4 +112,13 @@
   justify-content: center;
   align-items: center;
   
+}
+
+@media(min-width: 320px){
+  .rangeContent {
+    display: flex;
+  }
+  .rangeContainer input {
+    width: 35%;
+  }
 }
