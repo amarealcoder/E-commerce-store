@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import styles from './SearchResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
@@ -33,7 +33,7 @@ const SearchResults = () => {
     setFiltered(data);
     setPageTitle(pageTitle)
     setPageCategory(pageCategory)
-  }, [isSuccess])
+  }, [isSuccess, data, filteredCategory.category, handleFilter, pageCategory, pageTitle])
 
   return (
     <div>

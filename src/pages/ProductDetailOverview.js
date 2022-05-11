@@ -9,7 +9,7 @@ import Product from '../components/products/Product';
 import Button from '../components/ui/Button';
 
 const ProductsDetailOverview = () => {
-  const { data, isSuccess, isLoading, isError, error } = useGetProductsQuery();
+  const { data, isSuccess } = useGetProductsQuery();
   const history = useHistory();
   const { productId } = useParams();
 

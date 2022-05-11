@@ -14,7 +14,7 @@ import cancel from '../images/x.png';
 
 const Search = (props) => {
   const history = useHistory();
-  const { data, isSuccess, error, isError } = useGetProductsQuery();
+  const { data, isSuccess } = useGetProductsQuery();
   const [searchFilter, setSearchFilter] = useState([]);
   const [latestSearch, setLatestSearch] = useState([]);
 
@@ -49,7 +49,7 @@ const Search = (props) => {
             <img src={chevronRight} alt='a right angle' />
           </NavLink>
           <h2>Search</h2>
-          <img src={cart} />
+          <img src={cart} alt='cart'/>
         </header>
         <div className={styles.inputContainer}>
           <Input onChange={handleChange} />
@@ -61,9 +61,9 @@ const Search = (props) => {
         <p className={styles.searchTitle}>Latest search</p>
         {latestSearch.map((search) => (
           <div>
-            <img src={clock} />
+            <img src={clock} alt='clock'/>
             <p className={styles.prodTitle}>{search.title}</p>
-            <img src={cancel} />
+            <img src={cancel} alt='cancel'/>
           </div>
         ))}
       </section>

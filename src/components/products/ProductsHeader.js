@@ -7,7 +7,7 @@ const ProductsHeader = (props) => {
     return (
       <header className={styles.headerContainer}>
         <img onClick={props.onClick} src={chevronRight} alt='a right angle' />
-        <img src={cart} />
+        <img src={cart} alt='cart icon' />
       </header>
     );
 }
