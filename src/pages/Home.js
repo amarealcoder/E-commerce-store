@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
@@ -25,13 +25,13 @@ const Home = (props) => {
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const handleFilteredProducts = (category) => {
+  const handleFilteredProducts = useCallback((category) => {
     const filteredProductsCategory =
       isSuccess && data?.filter((product) => product.category === category);
     setCategory(filteredProductsCategory);
 
     setActiveCategory(category);
-  };
+  }, [isSuccess, data]);
 
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
