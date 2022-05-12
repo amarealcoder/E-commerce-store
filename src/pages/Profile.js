@@ -7,9 +7,9 @@ import { NavLink } from 'react-router-dom';
 const Profile = () => {
   const history = useHistory();
 
-  const changePasswordHandler = () => {
-    history.push('/password-change');
-  };
+  // const changePasswordHandler = () => {
+  //   history.push('/password-change');
+  // };
 
   return (
     <div className={styles.container}>

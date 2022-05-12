@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory} from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './SearchResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
@@ -21,12 +21,12 @@ const SearchResults = () => {
   const [pageTitle, setPageTitle] = useState('');
   const [pageCategory, setPageCategory] = useState('')
 
-  const handleFilter = (category, title) => {
+  const handleFilter = useCallback((category, title) => {
     const filteredCategory = isSuccess && data?.filter(item => item.category === category);
     setFiltered(filteredCategory);
     setPageTitle(title)
     setPageCategory(category)
-  } 
+  }, [isSuccess, data]) 
 
   useEffect(() => {
     isSuccess && handleFilter(filteredCategory.category)
