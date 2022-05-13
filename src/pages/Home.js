@@ -35,6 +35,7 @@ const Home = (props) => {
 
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
+    // eslint-disable-line react-hooks/exhaustive-deps
   }, [isSuccess, handleFilteredProducts]);
 
   return (
