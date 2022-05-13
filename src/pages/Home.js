@@ -35,7 +35,7 @@ const Home = (props) => {
 
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
-  }, [isSuccess, filteredCategory, handleFilteredProducts]);
+  }, [isSuccess, handleFilteredProducts]);
 
   return (
     <>
