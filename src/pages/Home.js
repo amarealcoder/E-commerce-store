@@ -25,6 +25,7 @@ const Home = (props) => {
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
   const handleFilteredProducts = useCallback((category) => {
     const filteredProductsCategory =
       isSuccess && data?.filter((product) => product.category === category);
@@ -35,7 +36,8 @@ const Home = (props) => {
 
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
-  }, [isSuccess, filteredCategory, handleFilteredProducts]);
+    // eslint-disable-next-line
+  }, [isSuccess, handleFilteredProducts]);
 
   return (
     <>
