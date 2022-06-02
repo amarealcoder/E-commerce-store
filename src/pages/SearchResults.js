@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './SearchResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
@@ -17,23 +17,33 @@ const SearchResults = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data, isSuccess, isLoading } = useGetProductsQuery();
   const [filtered, setFiltered] = useState([]);
-  const filteredCategory = useFilter(data, 'category')
+  const filteredCategory = useFilter(data, 'category');
   const [pageTitle, setPageTitle] = useState('');
-  const [pageCategory, setPageCategory] = useState('')
+  const [pageCategory, setPageCategory] = useState('');
+  const [isFiltered, setIsFiltered] = useState(false);
 
   const handleFilter = useCallback((category, title) => {
-    const filteredCategory = isSuccess && data?.filter(item => item.category === category);
-    setFiltered(filteredCategory);
-    setPageTitle(title)
-    setPageCategory(category)
-  }, [isSuccess, data]) 
+    const filteredCategories = isSuccess && data?.filter(item => item.category === category);
+    setPageTitle(title);
+    setPageCategory(category);
+    setFiltered(filteredCategories);
+  }, [isSuccess, data]); 
 
-  useEffect(() => {
-    isSuccess && handleFilter(filteredCategory.category)
-    setFiltered(data);
-    setPageTitle(pageTitle)
-    setPageCategory(pageCategory)
-  }, [isSuccess, data, filteredCategory.category, handleFilter, pageCategory, pageTitle])
+  const renderProducts = () => {
+    if(!isFiltered){
+    return (isSuccess && data?.map(item => <Product key={item.id} image={item.image} title={item.title} price={item.price}>
+      <div className={styles.rating}>
+        <Rating rating={item.rating.rate} count={item.rating.count}/>
+      </div>
+    </Product>))
+    }else{
+    return (isSuccess && data && filtered?.map(item => <Product key={item.id} image={item.image} title={item.title} price={item.price}>
+      <div className={styles.rating}>
+        <Rating rating={item.rating.rate} count={item.rating.count}/>
+      </div>
+    </Product>))
+    }
+  }
 
   return (
     <div>
@@ -51,8 +61,14 @@ const SearchResults = () => {
             Filter
           </button>
           <ul>
-            {isSuccess && filteredCategory.map(item => <li key={item.id} onClick={() => handleFilter(item.category, item.title)}>{item.category}
-            </li>)}
+            {isSuccess && filteredCategory.map(item => (
+            <li key={item.id} 
+              onClick={() => {
+                setIsFiltered(true);
+                handleFilter(item.category, item.title)}}
+                >
+                  {item.category}
+            </li>))}
           </ul>
         </div>
       </section>
@@ -69,12 +85,8 @@ const SearchResults = () => {
                 className={styles.loadingIcon}
               />
             </span>
-          )}
-        {isSuccess && data && filtered?.map(item => <Product key={item.id} image={item.image} title={item.title} price={item.price}>
-          <div className={styles.rating}>
-            <Rating rating={item.rating.rate} count={item.rating.count}/>
-          </div>
-        </Product>)}
+        )}
+        {renderProducts()}
       </section>
     </div>
   );
