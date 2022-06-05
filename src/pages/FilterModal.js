@@ -14,20 +14,68 @@ const ModalOverlay = (props) => {
   const [activeCategory, setActiveCategory] = useState('');
   const [activeSort, setActiveSort] = useState('');
 
+  const selectfilteredCategory = isSuccess && data?.filter(item => item.category === activeCategory);
+   
+
   const handleCategoryState = (category) => {
     setActiveCategory(category); 
   }
 
   const handleSortState = (sortBy) => {
     setActiveSort(sortBy)
-    console.log(sortBy)
   }
 
-  const handleFilterAll = () => {
-    const selectfilteredCategory = isSuccess && data?.filter(item => item.category === activeCategory);
-    console.log(selectfilteredCategory)
-  }
   
+  const handleFilterAll = () => {
+    
+    if(activeCategory && !activeSort){
+      console.log(selectfilteredCategory)
+
+    }else if(activeCategory && activeSort === 'popular'){
+      const sortPopularCategory =   selectfilteredCategory?.filter(item => item.rating.rate >= 4);
+      console.log(sortPopularCategory)
+
+    }else if(activeSort === 'newest' && activeCategory){
+      const sortNewestCategory = selectfilteredCategory?.slice(-3)
+      console.log(sortNewestCategory)
+
+    }else if(activeSort === 'oldest' && activeCategory){
+      const sortOldestCategory =   selectfilteredCategory?.slice(0, 3);
+      console.log(sortOldestCategory)
+
+    }else if(activeSort  === 'highest price' && activeCategory){
+      const highestPricesCategory = selectfilteredCategory?.filter(item => item.price >= 20);
+      console.log(highestPricesCategory)
+
+    }else if(activeSort  === 'lowest price' && activeCategory){
+      const lowestPricesCategory = selectfilteredCategory.filter(item => item.price <= 20) 
+      console.log(lowestPricesCategory)
+
+    }else if(activeSort === 'popular' && !activeCategory){
+      const sortPopular =  data?.filter(item => item.rating.rate >= 4) 
+      console.log(sortPopular)
+
+    }else if(activeSort === 'newest' && !activeCategory){
+      const sortNewest = data?.slice(-3);
+      console.log(sortNewest)
+
+    }else if(activeSort === 'oldest' && !activeCategory ){
+      const sortOldest =  data?.slice(0, 3);
+      console.log(sortOldest)
+
+    }else if(activeSort  === 'highest price' && !activeCategory){
+      const highestPrices = data?.filter(item => item.price >= 20);
+      console.log(highestPrices)
+
+    }else if(activeSort  === 'lowest price' && !activeCategory){
+      const lowestPrices = data.filter(item => item.price <= 20);
+      console.log(lowestPrices)
+
+    }else{
+      console.log('There is no data to display')
+    }
+  }
+
   return <React.Fragment>
     <div className={styles.modalContainer}>
       <header>
