@@ -13,6 +13,9 @@ const ModalOverlay = (props) => {
   const filteredCategory = useFilter(data, 'category');
   const [activeCategory, setActiveCategory] = useState('');
   const [activeSort, setActiveSort] = useState('');
+  const [isMinPrice, setIsMinPrice] = useState(0);
+  const [isMaxPrice, setIsMaxPrice] = useState(0);
+
 
   const selectfilteredCategory = isSuccess && data?.filter(item => item.category === activeCategory);
    
@@ -24,14 +27,21 @@ const ModalOverlay = (props) => {
   const handleSortState = (sortBy) => {
     setActiveSort(sortBy)
   }
+ 
+  const handleMinPrice = (e) => {
+    setIsMinPrice(e.target.value)
+  }
 
+  const handleMaxPrice = (e) => {
+    setIsMaxPrice(e.target.value)
+  }
   
   const handleFilterAll = () => {
     
-    if(activeCategory && !activeSort){
+    if(activeCategory && !activeSort && !isMinPrice && !isMaxPrice){
       console.log(selectfilteredCategory)
 
-    }else if(activeCategory && activeSort === 'popular'){
+    }else if(activeSort === 'popular' && activeCategory){
       const sortPopularCategory =   selectfilteredCategory?.filter(item => item.rating.rate >= 4);
       console.log(sortPopularCategory)
 
@@ -43,7 +53,7 @@ const ModalOverlay = (props) => {
       const sortOldestCategory =   selectfilteredCategory?.slice(0, 3);
       console.log(sortOldestCategory)
 
-    }else if(activeSort  === 'highest price' && activeCategory){
+    }else if(activeSort === 'highest price' && activeCategory){
       const highestPricesCategory = selectfilteredCategory?.filter(item => item.price >= 20);
       console.log(highestPricesCategory)
 
@@ -51,7 +61,11 @@ const ModalOverlay = (props) => {
       const lowestPricesCategory = selectfilteredCategory.filter(item => item.price <= 20) 
       console.log(lowestPricesCategory)
 
-    }else if(activeSort === 'popular' && !activeCategory){
+    }else if(isMinPrice && isMaxPrice && activeCategory){
+      const priceRange = selectfilteredCategory.filter(item => item.price >= isMinPrice && item.price <= isMaxPrice)
+      console.log(priceRange)
+     
+    }else if(activeSort === 'popular' && !activeCategory ){
       const sortPopular =  data?.filter(item => item.rating.rate >= 4) 
       console.log(sortPopular)
 
@@ -71,9 +85,18 @@ const ModalOverlay = (props) => {
       const lowestPrices = data.filter(item => item.price <= 20);
       console.log(lowestPrices)
 
+    }else if(isMinPrice && isMaxPrice && !activeCategory){
+      const priceRange = data.filter(item => item.price >= isMinPrice && item.price <= isMaxPrice)
+      console.log(priceRange)
+      
     }else{
       console.log('There is no data to display')
     }
+
+    setActiveSort('')
+    setActiveCategory('')
+    setIsMinPrice(0);
+    setIsMaxPrice(0);
   }
 
   return <React.Fragment>
@@ -102,8 +125,8 @@ const ModalOverlay = (props) => {
         <div className={styles.rangeContainer}>
           <p>Price Range</p>
           <div className={styles.rangeContent}>
-            <input type='number' placeholder='min-price'/>
-            <input type='number' placeholder='max-price'/>
+            <input type='number' placeholder='min-price' onChange={handleMinPrice}/>
+            <input type='number' placeholder='max-price' onChange={handleMaxPrice}/>
           </div>
         </div>
       </React.Fragment>
