@@ -8,7 +8,7 @@ const Backdrop = (props) => {
   return <div className={styles.backdrop} onClick={() => props.setIsOpen(false)}></div>
 }
 
-const ModalOverlay = (props) => {
+const ModalOverlay = ({setFiltered, setIsOpen, setIsFiltered}) => {
   const { isSuccess, data } = useGetProductsQuery();
   const filteredCategory = useFilter(data, 'category');
   const [activeCategory, setActiveCategory] = useState('');
@@ -36,74 +36,77 @@ const ModalOverlay = (props) => {
     setIsMaxPrice(e.target.value)
   }
   
+  // console.log(setFiltered)
   const handleFilterAll = () => {
     
     if(activeCategory && !activeSort && !isMinPrice && !isMaxPrice){
+      setFiltered(selectfilteredCategory)
       console.log(selectfilteredCategory)
+      
 
     }else if(activeSort === 'popular' && activeCategory){
       const sortPopularCategory =   selectfilteredCategory?.filter(item => item.rating.rate >= 4);
-      console.log(sortPopularCategory)
+      setFiltered(sortPopularCategory)
 
     }else if(activeSort === 'newest' && activeCategory){
       const sortNewestCategory = selectfilteredCategory?.slice(-3)
-      console.log(sortNewestCategory)
+      setFiltered(sortNewestCategory)
 
     }else if(activeSort === 'oldest' && activeCategory){
       const sortOldestCategory =   selectfilteredCategory?.slice(0, 3);
-      console.log(sortOldestCategory)
+      setFiltered(sortOldestCategory)
 
     }else if(activeSort === 'highest price' && activeCategory){
       const highestPricesCategory = selectfilteredCategory?.filter(item => item.price >= 20);
-      console.log(highestPricesCategory)
+    setFiltered(highestPricesCategory)
 
     }else if(activeSort  === 'lowest price' && activeCategory){
       const lowestPricesCategory = selectfilteredCategory.filter(item => item.price <= 20) 
-      console.log(lowestPricesCategory)
+    setFiltered(lowestPricesCategory)
 
     }else if(isMinPrice && isMaxPrice && activeCategory){
       const priceRange = selectfilteredCategory.filter(item => item.price >= isMinPrice && item.price <= isMaxPrice)
-      console.log(priceRange)
+    setFiltered(priceRange)
      
     }else if(activeSort === 'popular' && !activeCategory ){
       const sortPopular =  data?.filter(item => item.rating.rate >= 4) 
-      console.log(sortPopular)
+      setFiltered(sortPopular)
 
     }else if(activeSort === 'newest' && !activeCategory){
       const sortNewest = data?.slice(-3);
-      console.log(sortNewest)
+      setFiltered(sortNewest)
 
     }else if(activeSort === 'oldest' && !activeCategory ){
       const sortOldest =  data?.slice(0, 3);
-      console.log(sortOldest)
+      setFiltered(sortOldest)
 
     }else if(activeSort  === 'highest price' && !activeCategory){
       const highestPrices = data?.filter(item => item.price >= 20);
-      console.log(highestPrices)
+      setFiltered(highestPrices)
 
     }else if(activeSort  === 'lowest price' && !activeCategory){
       const lowestPrices = data.filter(item => item.price <= 20);
-      console.log(lowestPrices)
+      setFiltered(lowestPrices)
 
     }else if(isMinPrice && isMaxPrice && !activeCategory){
       const priceRange = data.filter(item => item.price >= isMinPrice && item.price <= isMaxPrice)
-      console.log(priceRange)
+      setFiltered(priceRange)
       
-    }else{
-      console.log('There is no data to display')
     }
 
     setActiveSort('')
     setActiveCategory('')
     setIsMinPrice(0);
     setIsMaxPrice(0);
+    setIsOpen(false);
+    setIsFiltered(true)
   }
 
   return <React.Fragment>
     <div className={styles.modalContainer}>
       <header>
         <h2>Filter</h2>
-        <h2 className={styles.cancel} onClick={() => props.setIsOpen(false)}>x</h2>
+        <h2 className={styles.cancel} onClick={() => setIsOpen(false)}>x</h2>
       </header>
       <React.Fragment>
         <p>Category</p>
@@ -141,7 +144,7 @@ const ModalOverlay = (props) => {
 const FilterModal = (props) => {
   return  <React.Fragment>    
     {ReactDom.createPortal(<Backdrop setIsOpen={props.setIsOpen}/>, document.getElementById('backdrop-root'))}
-    {ReactDom.createPortal(<ModalOverlay setIsOpen={props.setIsOpen}/>, document.getElementById('overlay-root'))}
+    {ReactDom.createPortal(<ModalOverlay setIsOpen={props.setIsOpen} setFiltered={props.setFiltered} setIsFiltered={props.setIsFiltered}/>, document.getElementById('overlay-root'))}
   </React.Fragment>
 }
 export default FilterModal;

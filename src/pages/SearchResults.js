@@ -47,7 +47,7 @@ const SearchResults = () => {
 
   return (
     <div>
-      {isOpen && <FilterModal  setIsOpen={setIsOpen} />}
+      {isOpen && <FilterModal  setIsOpen={setIsOpen} setFiltered={setFiltered} setIsFiltered={setIsFiltered}/>}
       <section className={styles.container1}>
         <ProductsHeader onClick={() => history.push('/')} />
         
