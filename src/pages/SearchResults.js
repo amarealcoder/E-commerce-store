@@ -22,6 +22,7 @@ const SearchResults = () => {
   const [pageCategory, setPageCategory] = useState('');
   const [isFiltered, setIsFiltered] = useState(false);
 
+
   const handleFilter = useCallback((category, title) => {
     const filteredCategories = isSuccess && data?.filter(item => item.category === category);
     setPageTitle(title);
@@ -45,12 +46,13 @@ const SearchResults = () => {
     }
   }
 
+
   return (
     <div>
       {isOpen && <FilterModal  setIsOpen={setIsOpen} setFiltered={setFiltered} setIsFiltered={setIsFiltered}/>}
       <section className={styles.container1}>
         <ProductsHeader onClick={() => history.push('/')} />
-        
+        <button style={{marginLeft: '5%',  marginBottom: '5px', cursor: 'pointer'}} onClick={() => setIsFiltered(false)}>See all</button>
         <div className={styles.title}>
           <p>{isSuccess && pageCategory}</p>
           <h3>{isSuccess && pageTitle}</h3>
@@ -86,7 +88,7 @@ const SearchResults = () => {
               />
             </span>
         )}
-        {renderProducts()}
+        {renderProducts()} 
       </section>
     </div>
   );
