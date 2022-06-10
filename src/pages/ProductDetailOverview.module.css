@@ -1,7 +1,8 @@
 .overview {
   width: 100%;
-  margin: 0 20px;
-  overflow-x: hidden;
+  height: 100%;
+  margin-right: 0 20px;
+  /* overflow-x: hidden; */
 }
 .productImages::-webkit-scrollbar{
   width: 0px;
@@ -50,11 +51,8 @@
 .otherProducts {
   background-color: #f6f6f6;
   width: 100%;
-  height: 319px;
-  margin: 0px;
-  position: absolute;
-  left: 0;
-  padding: 28px 0 38px 24px;
+  height: 100%;
+  padding: 28px 0 80px 24px;
 }
 .otherProductsHeader {
   display: flex;
@@ -72,22 +70,19 @@
 .otherProductsImg::-webkit-scrollbar{
   width: 0px;
 }
-.actionBtn {
-  position: absolute;
+.actionBtn{
+  position: fixed;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 105rem;
-  right: 10px;
-  padding-bottom: 30px;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
 }
 
 @media (min-width: 600px) {
-  .actionBtn {
-    top: 110rem;
-    left: 30px;
-  }
   .nav {
     margin-top: 7rem;
     margin-bottom: 7rem;
@@ -101,14 +96,4 @@
     text-align: center;
   }
 }
-@media (min-width: 1000px) {
-  .actionBtn {
-    top: 85rem;
-    left: 30px;
-  }
-}
-@media (min-width: 1024px) {
-  .actionBtn {
-    top: 98rem;
-  }
-}
+
