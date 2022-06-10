@@ -10,7 +10,7 @@ import ProductsHeader from '../components/products/ProductsHeader';
 import filter from '../images/sliders.png';
 import Rating from '../components/ui/Rating';
 import FilterModal from './FilterModal';
-import { FaSpinner, far, FaChevronLeft } from 'react-icons/fa';
+import { FaSpinner, FaChevronLeft } from 'react-icons/fa';
 
 const SearchResults = () => {
   const history = useHistory(); 
