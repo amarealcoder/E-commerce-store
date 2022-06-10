@@ -2,9 +2,8 @@ import styles from './Button.module.css';
 
 const Button = (props) => {
   return (
-    <div className={styles.buttonDiv}>
-      <button className={styles.button}>{props.children}</button>
-    </div>
+    <button onClick={props.onClick} className={styles.button}>{props.children}</button>
+    
   );
 };
 export default Button;

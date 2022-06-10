@@ -1,17 +1,7 @@
-.buttonDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .button {
   background: #0acf83;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 125px;
+  padding: 18px 10%;
   outline: none;
   border: none;
   font-weight: bold;

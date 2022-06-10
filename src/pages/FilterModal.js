@@ -36,7 +36,6 @@ const ModalOverlay = ({setFiltered, setIsOpen, setIsFiltered}) => {
     setIsMaxPrice(e.target.value)
   }
   
-  // console.log(setFiltered)
   const handleFilterAll = () => {
     
     if(activeCategory && !activeSort && !isMinPrice && !isMaxPrice){
