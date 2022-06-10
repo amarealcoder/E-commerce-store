@@ -6,3 +6,17 @@
   align-items: center;
   padding-right: 50px;
 }
+.headerContainer h2{
+  cursor: pointer;
+}
+.headerContainer div{
+  display: flex;
+  justify-content: space-between;
+}
+.headerContainer div > span{
+  margin-left: 10px;
+  background-color: #16c782;
+  color: #fff;
+  border-radius: 30%;
+  padding: 5px;
+}

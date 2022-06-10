@@ -9,8 +9,8 @@
   
 }
 .modalContainer {
-  overflow: hidden; 
-  position: relative;
+  overflow: scroll; 
+  position: absolute;
   padding: 24px;
   left: 10%;
   top: 10px;

@@ -10,7 +10,7 @@ import ProductsHeader from '../components/products/ProductsHeader';
 import filter from '../images/sliders.png';
 import Rating from '../components/ui/Rating';
 import FilterModal from './FilterModal';
-import { FaSpinner } from 'react-icons/fa';
+import { FaSpinner, FaChevronLeft } from 'react-icons/fa';
 
 const SearchResults = () => {
   const history = useHistory(); 
@@ -51,8 +51,10 @@ const SearchResults = () => {
     <div>
       {isOpen && <FilterModal  setIsOpen={setIsOpen} setFiltered={setFiltered} setIsFiltered={setIsFiltered}/>}
       <section className={styles.container1}>
-        <ProductsHeader onClick={() => history.push('/')} />
-        <button style={{marginLeft: '5%',  marginBottom: '5px', cursor: 'pointer'}} onClick={() => setIsFiltered(false)}>See all</button>
+        <ProductsHeader >
+          <FaChevronLeft onClick={() => history.push('/')}/>
+          <button style={{marginLeft: '5%',  marginBottom: '5px', cursor: 'pointer'}} onClick={() => setIsFiltered(false)}>See all</button>
+        </ProductsHeader>
         <div className={styles.title}>
           <p>{isSuccess && pageCategory}</p>
           <h3>{isSuccess && pageTitle}</h3>
