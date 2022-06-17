@@ -30,8 +30,8 @@ const Cart = ({setIsOpen, cartItems}) => {
             <p className={styles.amount}>{product.price}</p>
             <div className={styles.actionGroup}>
               <div className={styles.buttons}>
-                <button>-</button>
-                <span>1</span>
+                <button >-</button>
+                <span>{product.quantity}</span>
                 <button>+</button>
               </div>
               <FaTrash />
@@ -55,7 +55,7 @@ const Cart = ({setIsOpen, cartItems}) => {
 const ShoppingCart = ({cartItems, setIsOpen}) => {
   return <React.Fragment>
     {ReactDom.createPortal(<CartOverlay setIsOpen={setIsOpen}/>, document.getElementById('cartOverlay-root'))}
-    {ReactDom.createPortal(<Cart cartItems={cartItems} setIsOpen={setIsOpen} />, document.getElementById('cart-root'))}
+    {ReactDom.createPortal(<Cart setIsOpen={setIsOpen}  cartItems={cartItems} />, document.getElementById('cart-root'))}
     </React.Fragment>
   
 }

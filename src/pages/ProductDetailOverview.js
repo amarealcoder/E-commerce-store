@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaCartPlus } from 'react-icons/fa';
 import styles from './ProductDetailOverview.module.css';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
@@ -11,26 +11,50 @@ import Product from '../components/products/Product';
 import Button from '../components/ui/Button';
 import ShoppingCart from '../components/ui/ShoppingCart';
 
+
 const ProductsDetailOverview = () => {
   const { data, isSuccess } = useGetProductsQuery();
   const history = useHistory();
   const { productId } = useParams();
 
-  const [cartItems, setCartItems] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+  const setPrevCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+  const setPrevCount = JSON.parse(localStorage.getItem('cart-count') || '0')
+
+  const [cartItems, setCartItems] = useState(setPrevCartItems);
+  const [cartCount, setCartCount] = useState(setPrevCount);
   const [isOpen, setIsOpen] = useState(false);
   
-  const itemToAdd = isSuccess && data.filter(item => item.id === Number(productId))
+  const handleAddToCart = (id) => {
+  // Increases cart count
+    setCartCount((prevCount) => prevCount + 1);  
+    
+    //add the quantity property
+    const newData = data.map(item => ({ ...item, quantity: 1 })); 
+  
+      //check item is already added before?
+      const isExisting = cartItems.find(item => item.id === id); 
 
-  const handleAddToCart = () => {
-    setCartCount(prevCount => prevCount + 1);
-    setCartItems(prevItem => [...prevItem, ...itemToAdd]);
-    console.log(cartItems)
-  }
+      if(isExisting){
+        const increaseQuantity = cartItems.map(item => item.id === id ? {...item, quantity: item.quantity + 1} : item);
+        setCartItems(increaseQuantity);
+      }else{
+        // filter out item to add
+        const itemToAdd = newData
+      .filter((item) => item.id === id); 
+         // push and spread item to cart state
+        setCartItems(prevItem => ([...prevItem, ...itemToAdd])); 
+      }
+  } 
+  
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    localStorage.setItem('cart-count', JSON.stringify(cartCount));
+    }, [cartItems, cartCount])
+
   return (
       <React.Fragment>
     <div className={styles.overview}>
-      {isOpen && <ShoppingCart cartItems={cartItems} setIsOpen={setIsOpen}/>}
+      {isOpen && <ShoppingCart setCartItems={setCartItems} cartItems={cartItems} setIsOpen={setIsOpen}/>}
       <section>
         {data.filter(product => product.id === Number(productId)).map((product) => (
               <div key={product.id}>
@@ -70,11 +94,11 @@ const ProductsDetailOverview = () => {
         <div className={styles.otherProductsImg}>
         {isSuccess && data && data.map(product => <Product key={product.id} image={product.image} price={product.price} title={product.title}/>)}
         </div>
-      </section>
-      
-      <div className={styles.actionBtn}>
-        <Button onClick={() => handleAddToCart()}>Add to cart</Button>
+
+        <div className={styles.actionBtn}>
+        <Button onClick={() => handleAddToCart(Number(productId))}>Add to cart</Button>
       </div>
+      </section>
     </div>
         
   </React.Fragment>);
