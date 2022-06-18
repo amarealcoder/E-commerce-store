@@ -1,48 +1,109 @@
-import styles from './ShoppingCart.module.css';
-import ReactDom from 'react-dom';
+import styles from "./ShoppingCart.module.css";
+import ReactDom from "react-dom";
 
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash } from "react-icons/fa";
 
-import Button from './Button';
-import ProductsHeader from '../products/ProductsHeader';
-import React from 'react';
+import Button from "./Button";
+import ProductsHeader from "../products/ProductsHeader";
+import React from "react";
 
-const CartOverlay = ({setIsOpen}) => {
-  return <div onClick={() => setIsOpen(false)} className={styles.cartOverlay}></div>
-}
+const CartOverlay = ({ setIsOpen }) => {
+  return (
+    <div onClick={() => setIsOpen(false)} className={styles.cartOverlay}></div>
+  );
+};
 
-const Cart = ({setIsOpen, cartItems}) => {
-  
-   return (
+const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
+  const isCartEmpty = cartItems.length === 0;
+
+  const handleMinus = (id) => {
+    const minusCount = cartItems.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            quantity: item.quantity - 1,
+            price: item.price / item.quantity,
+          }
+        : item
+    );
+    setCartItems(minusCount);
+    setCartCount((prevCount) => prevCount - 1);
+  };
+
+  const handlePlus = (id) => {
+    const plusCount = cartItems.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            quantity: item.quantity + 1,
+            price: (item.quantity + 1) * item.price,
+          }
+        : item
+    );
+
+    setCartItems(plusCount);
+
+    setCartCount((prevCount) => prevCount + 1);
+  };
+
+  const handleDeleteItem = (id) => {
+    const deleteItem = cartItems.filter((item) => item.id !== id);
+    setCartItems(deleteItem);
+
+    const resetCount = cartItems.find((item) => item.id === id);
+    setCartCount((prevCount) => prevCount - resetCount.quantity);
+  };
+
+  const handleDeleteCart = () => {
+    setCartCount(0);
+    setCartItems([]);
+  };
+  //get all cart prices 
+  const cartPrices = cartItems.map((item) => item.price);
+
+  //Add all cart prices
+  const sumTotalPrice = cartPrices.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
+
+  return (
     <div className={styles.container}>
-      <ProductsHeader> 
+      <ProductsHeader>
         <h2 onClick={() => setIsOpen(false)}> x</h2>
         <h4>Shopping Cart</h4>
-        <FaTrash style={{cursor: 'pointer'}}/>
+        <FaTrash
+          onClick={() => handleDeleteCart()}
+          style={{ cursor: "pointer" }}
+        />
       </ProductsHeader>
+
+      {isCartEmpty && <p className={styles.cartEmpty}>Your cart is empty</p>}
+
       <section className={styles.cartItems}>
-        {cartItems?.map(product => <div key={product.id} className={styles.content}>
-          <div className={styles.imageContainer}>
-            <img src={product.image} alt={product.title} />
-          </div>
-          <div className={styles.imageInfo}>
-            <p>{product.title}</p>
-            <p className={styles.amount}>{product.price}</p>
-            <div className={styles.actionGroup}>
-              <div className={styles.buttons}>
-                <button >-</button>
-                <span>{product.quantity}</span>
-                <button>+</button>
+        {cartItems?.map((product) => (
+          <div key={product.id} className={styles.content}>
+            <div className={styles.imageContainer}>
+              <img src={product.image} alt={product.title} />
+            </div>
+            <div className={styles.imageInfo}>
+              <p>{product.title}</p>
+              <p className={styles.amount}>{product.price}</p>
+              <div className={styles.actionGroup}>
+                <div className={styles.buttons}>
+                  <button onClick={() => handleMinus(product.id)}>-</button>
+                  <span>{product.quantity}</span>
+                  <button onClick={() => handlePlus(product.id)}>+</button>
+                </div>
+                <FaTrash onClick={() => handleDeleteItem(product.id)} />
               </div>
-              <FaTrash />
             </div>
           </div>
-        </div>
-        )}
+        ))}
       </section>
       <div className={styles.total}>
-        <p className={styles.totalItems}>Total 1 Item</p>
-        <p className={styles.totalAmount}>USD 305</p>
+        <p className={styles.totalItems}>Total {cartItems.length}</p>
+        <p className={styles.totalAmount}>USD {sumTotalPrice}</p>
       </div>
       <div className={styles.buttonContainer}>
         <Button>Proceed to Checkout </Button>
@@ -51,14 +112,23 @@ const Cart = ({setIsOpen, cartItems}) => {
   );
 };
 
-
-const ShoppingCart = ({cartItems, setIsOpen}) => {
-  return <React.Fragment>
-    {ReactDom.createPortal(<CartOverlay setIsOpen={setIsOpen}/>, document.getElementById('cartOverlay-root'))}
-    {ReactDom.createPortal(<Cart setIsOpen={setIsOpen}  cartItems={cartItems} />, document.getElementById('cart-root'))}
+const ShoppingCart = ({ cartItems, setIsOpen, setCartItems, setCartCount }) => {
+  return (
+    <React.Fragment>
+      {ReactDom.createPortal(
+        <CartOverlay setIsOpen={setIsOpen} />,
+        document.getElementById("cartOverlay-root")
+      )}
+      {ReactDom.createPortal(
+        <Cart
+          setCartCount={setCartCount}
+          setIsOpen={setIsOpen}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+        />,
+        document.getElementById("cart-root")
+      )}
     </React.Fragment>
-  
-}
+  );
+};
 export default ShoppingCart;
-
- 
