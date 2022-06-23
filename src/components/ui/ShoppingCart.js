@@ -1,6 +1,5 @@
 import styles from './ShoppingCart.module.css';
 import ReactDom from 'react-dom';
-import { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
 import Button from './Button';
