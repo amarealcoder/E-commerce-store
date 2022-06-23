@@ -63,10 +63,9 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
   const cartPrices = cartItems.map((item) => item.price);
 
   //Add all cart prices
-  const sumTotalPrice = cartPrices.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
-  );
+  const sumTotalPrice = cartPrices
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+    .toLocaleString();
 
   return (
     <div className={styles.container}>
@@ -89,7 +88,9 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
             </div>
             <div className={styles.imageInfo}>
               <p>{product.title}</p>
-              <p className={styles.amount}>{product.price}</p>
+              <p className={styles.amount}>
+                USD {product.price.toLocaleString()}
+              </p>
               <div className={styles.actionGroup}>
                 <div className={styles.buttons}>
                   <button
