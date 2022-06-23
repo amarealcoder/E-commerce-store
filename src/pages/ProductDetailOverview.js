@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { FaChevronLeft, FaCartPlus } from "react-icons/fa";
-import styles from "./ProductDetailOverview.module.css";
-import { useParams, useHistory, NavLink } from "react-router-dom";
-import { useGetProductsQuery } from "../services/productsApi";
+import React, { useState, useEffect } from 'react';
+import { FaChevronLeft, FaCartPlus } from 'react-icons/fa';
+import styles from './ProductDetailOverview.module.css';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useGetProductsQuery } from '../services/productsApi';
 
-import ProductsHeader from "../components/products/ProductsHeader";
-import ProductsTitleBadge from "../components/products/ProductsTitleBadge";
-import Comments from "../components/ui/Comments";
-import Product from "../components/products/Product";
-import Button from "../components/ui/Button";
-import ShoppingCart from "../components/ui/ShoppingCart";
+import ProductsHeader from '../components/products/ProductsHeader';
+import ProductsTitleBadge from '../components/products/ProductsTitleBadge';
+import Comments from '../components/ui/Comments';
+import Product from '../components/products/Product';
+import Button from '../components/ui/Button';
+import ShoppingCart from '../components/ui/ShoppingCart';
 
 const ProductsDetailOverview = () => {
   const { data, isSuccess } = useGetProductsQuery();
   const history = useHistory();
   const { productId } = useParams();
 
-  const setPrevCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-  const setPrevCount = JSON.parse(localStorage.getItem("cart-count") || "0");
+  const setPrevCartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+  const setPrevCount = JSON.parse(localStorage.getItem('cart-count') || '0');
 
   const [cartItems, setCartItems] = useState(setPrevCartItems);
   const [cartCount, setCartCount] = useState(setPrevCount);
@@ -46,7 +46,6 @@ const ProductsDetailOverview = () => {
             }
           : item
       );
-      console.log(increaseQuantity);
       setCartItems(increaseQuantity);
     } else {
       // filter out item to add
@@ -58,8 +57,8 @@ const ProductsDetailOverview = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-    localStorage.setItem("cart-count", JSON.stringify(cartCount));
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    localStorage.setItem('cart-count', JSON.stringify(cartCount));
   }, [cartItems, cartCount]);
 
   return (
@@ -79,7 +78,7 @@ const ProductsDetailOverview = () => {
             .map((product) => (
               <div key={product.id}>
                 <ProductsHeader>
-                  <FaChevronLeft size={25} onClick={() => history.push("/")} />
+                  <FaChevronLeft size={25} onClick={() => history.push('/')} />
                   <div>
                     <FaCartPlus size={25} onClick={() => setIsOpen(true)} />
                     <span>{cartCount}</span>
@@ -100,7 +99,7 @@ const ProductsDetailOverview = () => {
                   <img
                     className={styles.overviewImg}
                     src={product.image}
-                    alt=""
+                    alt=''
                   />
                 </div>
               </div>
@@ -116,7 +115,7 @@ const ProductsDetailOverview = () => {
           <div className={styles.otherProductsHeader}>
             <p>Another Product</p>
             <p
-              onClick={() => history.push("/search-results")}
+              onClick={() => history.push('/search-results')}
               className={styles.more}
             >
               See All
