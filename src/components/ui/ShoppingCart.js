@@ -1,11 +1,10 @@
-import styles from "./ShoppingCart.module.css";
-import ReactDom from "react-dom";
+import styles from './ShoppingCart.module.css';
+import ReactDom from 'react-dom';
+import { FaTrash } from 'react-icons/fa';
 
-import { FaTrash } from "react-icons/fa";
-
-import Button from "./Button";
-import ProductsHeader from "../products/ProductsHeader";
-import React from "react";
+import Button from './Button';
+import ProductsHeader from '../products/ProductsHeader';
+import React from 'react';
 
 const CartOverlay = ({ setIsOpen }) => {
   return (
@@ -26,7 +25,9 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
           }
         : item
     );
+
     setCartItems(minusCount);
+
     setCartCount((prevCount) => prevCount - 1);
   };
 
@@ -58,7 +59,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
     setCartCount(0);
     setCartItems([]);
   };
-  //get all cart prices 
+  //get all cart prices
   const cartPrices = cartItems.map((item) => item.price);
 
   //Add all cart prices
@@ -74,7 +75,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
         <h4>Shopping Cart</h4>
         <FaTrash
           onClick={() => handleDeleteCart()}
-          style={{ cursor: "pointer" }}
+          style={{ cursor: 'pointer' }}
         />
       </ProductsHeader>
 
@@ -91,9 +92,22 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
               <p className={styles.amount}>{product.price}</p>
               <div className={styles.actionGroup}>
                 <div className={styles.buttons}>
-                  <button onClick={() => handleMinus(product.id)}>-</button>
+                  <button
+                    disabled={product.quantity === 1 ? true : false}
+                    onClick={() => {
+                      handleMinus(product.id);
+                    }}
+                  >
+                    -
+                  </button>
                   <span>{product.quantity}</span>
-                  <button onClick={() => handlePlus(product.id)}>+</button>
+                  <button
+                    onClick={() => {
+                      handlePlus(product.id);
+                    }}
+                  >
+                    +
+                  </button>
                 </div>
                 <FaTrash onClick={() => handleDeleteItem(product.id)} />
               </div>
@@ -117,7 +131,7 @@ const ShoppingCart = ({ cartItems, setIsOpen, setCartItems, setCartCount }) => {
     <React.Fragment>
       {ReactDom.createPortal(
         <CartOverlay setIsOpen={setIsOpen} />,
-        document.getElementById("cartOverlay-root")
+        document.getElementById('cartOverlay-root')
       )}
       {ReactDom.createPortal(
         <Cart
@@ -126,7 +140,7 @@ const ShoppingCart = ({ cartItems, setIsOpen, setCartItems, setCartCount }) => {
           cartItems={cartItems}
           setCartItems={setCartItems}
         />,
-        document.getElementById("cart-root")
+        document.getElementById('cart-root')
       )}
     </React.Fragment>
   );
