@@ -84,23 +84,33 @@ const ProductsDetailOverview = () => {
                     <span>{cartCount}</span>
                   </div>
                 </ProductsHeader>
-                <ProductsTitleBadge
-                  price={product.price}
-                  title={product.title}
-                />
-                <ul className={styles.nav}>
-                  <NavLink to={`/${productId}/specification`}>Overview</NavLink>
-                  <NavLink to={`/${productId}/specification`}>Features</NavLink>
-                  <NavLink to={`/${productId}/specification`}>
-                    Specification
-                  </NavLink>
-                </ul>
-                <div className={styles.overviewImageContainer}>
-                  <img
-                    className={styles.overviewImg}
-                    src={product.image}
-                    alt=''
-                  />
+                <div className={styles.productDetail}>
+                  <div>
+                    <ProductsTitleBadge
+                      price={product.price}
+                      title={product.title}
+                    />
+                  </div>
+                  <div>
+                    <ul className={styles.nav}>
+                      <NavLink to={`/${productId}/specification`}>
+                        Overview
+                      </NavLink>
+                      <NavLink to={`/${productId}/specification`}>
+                        Features
+                      </NavLink>
+                      <NavLink to={`/${productId}/specification`}>
+                        Specification
+                      </NavLink>
+                    </ul>
+                    <div className={styles.overviewImageContainer}>
+                      <img
+                        className={styles.overviewImg}
+                        src={product.image}
+                        alt={product.title}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
