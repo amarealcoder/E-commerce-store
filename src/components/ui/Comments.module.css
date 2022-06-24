@@ -1,14 +1,12 @@
-.productReviews{
- margin :  0;
- padding: 0;
- width: 300px;
+.productReviews {
+  margin: 0;
+  padding: 0;
 }
 .reviewContent {
   margin: 30px 0 55px 0;
   display: flex;
   flex-direction: column;
-  width: 329px;
-  height: 135px; 
+  height: 135px;
 }
 .reviewContent img {
   background-blend-mode: normal;
@@ -27,12 +25,11 @@
   margin-right: 110px;
   font-size: 16px;
 }
-.reviewer span{
-    color: #7F7F7F;
+.reviewer span {
+  color: #7f7f7f;
 }
 .starRating {
   margin-left: 60px;
-  
 }
 .starRating .star {
   margin-left: 0;
@@ -43,12 +40,15 @@
   padding-right: 3rem;
 }
 
-@media(min-width: 600px){
-    .productReviews{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .reviewContent{
-        margin-right: 70px;
-    }
+@media (min-width: 600px) {
+  .productReviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+}
+@media (min-width: 960px) {
+  .productReviews {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
