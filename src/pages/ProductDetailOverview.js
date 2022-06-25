@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaCartPlus } from 'react-icons/fa';
 import styles from './ProductDetailOverview.module.css';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 
 import ProductsHeader from '../components/products/ProductsHeader';
@@ -22,6 +22,7 @@ const ProductsDetailOverview = () => {
   const [cartItems, setCartItems] = useState(setPrevCartItems);
   const [cartCount, setCartCount] = useState(setPrevCount);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('overview');
 
   const handleAddToCart = (id) => {
     // Increases cart count
@@ -55,7 +56,6 @@ const ProductsDetailOverview = () => {
       setCartItems((prevItem) => [...prevItem, ...itemToAdd]);
     }
   };
-
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
     localStorage.setItem('cart-count', JSON.stringify(cartCount));
@@ -92,17 +92,38 @@ const ProductsDetailOverview = () => {
                     />
                   </div>
                   <div>
-                    <ul className={styles.nav}>
-                      <NavLink to={`/${productId}/specification`}>
+                    <div className={styles.nav}>
+                      <p
+                        className={
+                          activeLink === 'overview' ? styles.active : ''
+                        }
+                        onClick={() => {
+                          setActiveLink('overview');
+                        }}
+                      >
                         Overview
-                      </NavLink>
-                      <NavLink to={`/${productId}/specification`}>
+                      </p>
+                      <p
+                        className={
+                          activeLink === 'features' ? styles.active : ''
+                        }
+                        onClick={() => {
+                          setActiveLink('features');
+                        }}
+                      >
                         Features
-                      </NavLink>
-                      <NavLink to={`/${productId}/specification`}>
+                      </p>
+                      <p
+                        className={
+                          activeLink === 'specification' ? styles.active : ''
+                        }
+                        onClick={() => {
+                          setActiveLink('specification');
+                        }}
+                      >
                         Specification
-                      </NavLink>
-                    </ul>
+                      </p>
+                    </div>
                     <div className={styles.overviewImageContainer}>
                       <img
                         className={styles.overviewImg}
@@ -112,15 +133,26 @@ const ProductsDetailOverview = () => {
                     </div>
                   </div>
                 </div>
+                <div className={styles.reviewsContainer}>
+                  <p className={styles.reviewsDetail}>Reviews (120)</p>
+                  {activeLink === 'overview' && <Comments />}
+                  {activeLink === 'features' && (
+                    <p className={styles.reviewsDetail}>
+                      {product.description}
+                    </p>
+                  )}
+                  {activeLink === 'specification' && (
+                    <p className={styles.reviewsDetail}>
+                      The {product.title} is really cool to use. It is durable
+                      and everybody loves it. Try it and see!
+                    </p>
+                  )}
+                  <p className={styles.seeAll}>See All Reviews</p>
+                </div>
               </div>
             ))}
         </section>
 
-        <section className={styles.reviewsContainer}>
-          <p>Reviews (120)</p>
-          <Comments />
-          <p className={styles.seeAll}>See All Reviews</p>
-        </section>
         <section className={styles.otherProducts}>
           <div className={styles.otherProductsHeader}>
             <p>Another Product</p>
