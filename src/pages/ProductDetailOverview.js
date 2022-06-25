@@ -56,39 +56,6 @@ const ProductsDetailOverview = () => {
       setCartItems((prevItem) => [...prevItem, ...itemToAdd]);
     }
   };
-
-  // const handleProductDetail = useCallback((navLink, id) => {
-  // setActiveLink(navLink);
-  // if (navLink === 'features') {
-  // return <p>Hey features</p>;
-  // return data.map((product) =>
-  //   product.id === id ? <p>{product.description}</p> : ''
-  // );
-  // } else if (navLink === 'specification') {
-  //   return <p>Hey specs</p>;
-  // return data.map((product) =>
-  //   product.id === id ? (
-  //     <p>
-  //       The {product.title} is really cool to use. It is durable and
-  //       everybody loves it. Try it and see!
-  //     </p>
-  //   ) : (
-  //     ''
-  //   )
-  // );
-  //   } else {
-  //     return (
-  //       <React.Fragment>
-  //         <p>Reviews (120)</p>
-  //         <Comments />
-  //       </React.Fragment>
-  //     );
-  //   }
-  // });
-  const handleProductDetail = (activeLink) => {
-    // setActiveLink(navlink);
-    console.log(activeLink);
-  };
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
     localStorage.setItem('cart-count', JSON.stringify(cartCount));
@@ -169,7 +136,11 @@ const ProductsDetailOverview = () => {
                 <div className={styles.reviewsContainer}>
                   <p className={styles.reviewsDetail}>Reviews (120)</p>
                   {activeLink === 'overview' && <Comments />}
-                  {activeLink === 'features' && <p className={styles.reviewsDetail}>{product.description}</p>}
+                  {activeLink === 'features' && (
+                    <p className={styles.reviewsDetail}>
+                      {product.description}
+                    </p>
+                  )}
                   {activeLink === 'specification' && (
                     <p className={styles.reviewsDetail}>
                       The {product.title} is really cool to use. It is durable
