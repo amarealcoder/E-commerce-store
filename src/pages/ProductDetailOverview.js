@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaCartPlus } from 'react-icons/fa';
 import styles from './ProductDetailOverview.module.css';
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 
 import ProductsHeader from '../components/products/ProductsHeader';
