@@ -11,7 +11,7 @@ import Loader from '../components/ui/Loader';
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
-import { FaSpinner, FaTimes, FaArrowRight } from 'react-icons/fa';
+import { FaTimes, FaArrowRight } from 'react-icons/fa';
 
 const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
