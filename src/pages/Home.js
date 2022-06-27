@@ -144,7 +144,7 @@ const Home = (props) => {
               />
             </span>
           )}
-          {isError && <p>{error.message}</p>}
+          {isError && <p className={styles.error}>{error.status}</p>}
           {isSuccess &&
             data &&
             data
@@ -155,7 +155,6 @@ const Home = (props) => {
                   image={product.image}
                   title={product.title}
                   price={product.price}
-                  // onClick={() => handleRedirect(product.id)}
                 />
               ))}
         </div>
