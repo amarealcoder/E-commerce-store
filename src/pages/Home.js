@@ -6,13 +6,14 @@ import useFilter from '../hooks/useFilter';
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
+import Loader from '../components/ui/Loader';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
 import avatarIcon from '../images/Avatar.png';
 import { FaSpinner, FaTimes, FaArrowRight } from 'react-icons/fa';
 
-const Home = (props) => {  
+const Home = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [category, setCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
@@ -25,14 +26,17 @@ const Home = (props) => {
   const handleOpenMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
-  const handleFilteredProducts = useCallback((category) => {
-    const filteredProductsCategory =
-      isSuccess && data?.filter((product) => product.category === category);
-    setCategory(filteredProductsCategory);
 
-    setActiveCategory(category);
-  }, [isSuccess, data]);
+  const handleFilteredProducts = useCallback(
+    (category) => {
+      const filteredProductsCategory =
+        isSuccess && data?.filter((product) => product.category === category);
+      setCategory(filteredProductsCategory);
+
+      setActiveCategory(category);
+    },
+    [isSuccess, data]
+  );
 
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
@@ -132,18 +136,7 @@ const Home = (props) => {
         </div>
 
         <div className={styles.featuredContainer}>
-          {isLoading && (
-            <span>
-              <FaSpinner
-                style={{
-                  fontSize: '50px',
-                  position: 'absolute',
-                  left: '50%'
-                }}
-                className={styles.loadingIcon}
-              />
-            </span>
-          )}
+          {isLoading && <Loader />}
           {isError && <p className={styles.error}>{error.status}</p>}
           {isSuccess &&
             data &&
