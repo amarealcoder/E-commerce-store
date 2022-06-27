@@ -58,7 +58,7 @@ a.isActive {
   justify-content: center;
   align-items: center;
   padding: 0 0 0 20%;
-  width: 100%
+  width: 100%;
 }
 .homeProdDisplay .category::-webkit-scrollbar {
   width: 0px;
@@ -130,11 +130,16 @@ a.isActive {
 .homeProdDisplay .featuredContainer::-webkit-scrollbar {
   width: 0px;
 }
-.homeProdDisplay .featuredContainer span{
-  margin: 30px 0 0 40%
+.homeProdDisplay .featuredContainer span, .error{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .loadingIcon {
   animation: spin 1s infinite linear;
+}
+.error {
+  color: #be0303;
 }
 @keyframes spin {
   from {
@@ -155,8 +160,8 @@ a.isActive {
   .homeProdDisplay .featuredContainer {
     margin-left: 5rem;
   }
-  .homeProdDisplay .featuredContainer span{
-    margin: 30px 0 0 5%
+  .homeProdDisplay .featuredContainer span {
+    margin: 30px 0 0 5%;
   }
   .homeProdDisplay .featuredProducts {
     text-align: center;
