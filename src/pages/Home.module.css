@@ -130,24 +130,11 @@ a.isActive {
 .homeProdDisplay .featuredContainer::-webkit-scrollbar {
   width: 0px;
 }
-.homeProdDisplay .featuredContainer span, .error{
+.error {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-.loadingIcon {
-  animation: spin 1s infinite linear;
-}
-.error {
   color: #be0303;
-}
-@keyframes spin {
-  from {
-    transform: scale(1) rotate(0deg);
-  }
-  to {
-    transform: scale(1) rotate(360deg);
-  }
 }
 
 @media (min-width: 600px) {
