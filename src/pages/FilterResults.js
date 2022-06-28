@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import styles from './SearchResults.module.css';
+import styles from './FilterResults.module.css';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
 

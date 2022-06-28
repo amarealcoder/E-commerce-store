@@ -1,6 +1,6 @@
 import styles from './Profile.module.css';
-import chevronRight from '../images/chevron-left.png';
-import profileImage from '../images/Avatar.png';
+import chevronRight from '../../images/chevron-left.png';
+import profileImage from '../../images/Avatar.png';
 import { NavLink } from 'react-router-dom';
 
 const Profile = () => {
