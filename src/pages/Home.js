@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
+import { onAuthStateChanged } from 'firebase/auth';
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
@@ -10,10 +11,10 @@ import Loader from '../components/ui/Loader';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
-import avatarIcon from '../images/Avatar.png';
+// import avatarIcon from '../images/Avatar.png';
 import { FaTimes, FaArrowRight } from 'react-icons/fa';
 
-const Home = (props) => {
+const Home = ({ user }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [category, setCategory] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
@@ -41,7 +42,7 @@ const Home = (props) => {
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
     // eslint-disable-next-line
-  }, [isSuccess, handleFilteredProducts]);
+  }, [isSuccess, handleFilteredProducts, onAuthStateChanged]);
 
   return (
     <>
@@ -67,11 +68,11 @@ const Home = (props) => {
           <img src={logoIcon} alt='logo icon' />
 
           <NavLink to='/profile'>
-            <img src={avatarIcon} alt='profile icon' />
+            <img src={user?.photoUrl} alt='profile icon' />
           </NavLink>
         </nav>
         <div>
-          <p>Hi Andrea</p>
+          <p>Hi {user?.email}</p>
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
@@ -108,7 +109,7 @@ const Home = (props) => {
                 <div className={styles.prodDesc}>
                   <h2>{product.title}</h2>
                   <div className={styles.shopNow}>
-                    <NavLink to={`/${product.id}`}>
+                    <NavLink to={`/home/${product.id}`}>
                       Shop now
                       <FaArrowRight
                         style={{
