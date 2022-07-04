@@ -1,9 +1,23 @@
+import { useHistory } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../services/firebaseAuth';
+
 import styles from './Profile.module.css';
 import chevronRight from '../../images/chevron-left.png';
-import profileImage from '../../images/Avatar.png';
 import { NavLink } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = ({user}) => {
+  const history = useHistory();
+
+  //to delete a user
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+      history.push('/sign-in')
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -14,10 +28,10 @@ const Profile = () => {
           <span></span>
         </header>
         <div className={styles.profileHeader}>
-          <img src={profileImage} alt='' />
+          <img src={user?.photoUrl} alt='user avatar' />
           <div>
-            <h2>Andrea Alamata</h2>
-            <p>example123@example.com</p>
+            <h2>{user?.displayName}</h2>
+            <p>{user?.email}</p>
           </div>
         </div>
       </section>
@@ -41,7 +55,9 @@ const Profile = () => {
         <p className={styles.personal}>Personal</p>
         <p className={styles.profileInfo}>Report a bug</p>
         <hr />
-        <p className={styles.profileInfo}>Log out</p>
+        <p className={styles.profileInfo} onClick={logOut}>
+          Log out
+        </p>
       </section>
     </div>
   );
