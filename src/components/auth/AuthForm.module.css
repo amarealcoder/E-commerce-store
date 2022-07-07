@@ -68,6 +68,9 @@
 }
 .formContainer .formActions {
   margin-top: 32px;
+  text-align: center;
+  width: 150%;
+  padding: 20px 10px 
 }
 .formContainer .socialIcons {
   display: flex;
