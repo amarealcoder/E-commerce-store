@@ -10,6 +10,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.headerIcons img{
+  cursor: pointer;
+}
 .navContainer {
   display: flex;
   position: absolute;
