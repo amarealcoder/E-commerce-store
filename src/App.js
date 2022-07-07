@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     //firebase function to check the current user status
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
     });
     return () => {
