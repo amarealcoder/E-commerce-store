@@ -1,7 +1,11 @@
 import styles from './AuthForm.module.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
 import { auth } from '../../services/firebaseAuth';
 
 import Button from '../ui/Button';
@@ -11,6 +15,8 @@ import facebookIcon from '../../images/facebookIcon.png';
 import googleIcon from '../../images/googleIcon.png';
 import appleIcon from '../../images/appleIcon.png';
 import Loader from '../ui/Loader';
+
+const provider = new GoogleAuthProvider();
 
 const SignUpForm = () => {
   const history = useHistory();
@@ -31,7 +37,15 @@ const SignUpForm = () => {
     }
     setLoading(false);
   };
-
+  const signInWithGoogle = async () => {
+    try {
+      const googleUser = await signInWithPopup(auth, provider);
+      console.log(googleUser);
+      history.push('/home');
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       className={styles.bg}
@@ -73,9 +87,13 @@ const SignUpForm = () => {
           ) : (
             <>
               <div className={styles.socialIcons}>
-                <img src={appleIcon} alt='' />
-                <img src={facebookIcon} alt='' />
-                <img src={googleIcon} alt='' />
+                <img
+                  src={googleIcon}
+                  alt='google icon'
+                  onClick={() => signInWithGoogle()}
+                />
+                <img src={appleIcon} alt='apple icon' />
+                <img src={facebookIcon} alt='facebook icon' />
               </div>
               <div className={styles.formActions}>
                 <Button onClick={(event) => handleSignUp(event)}>
