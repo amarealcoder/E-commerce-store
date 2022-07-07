@@ -3,7 +3,6 @@ import { useEffect, useState, useCallback } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { useGetProductsQuery } from '../services/productsApi';
 import useFilter from '../hooks/useFilter';
-import { onAuthStateChanged } from 'firebase/auth';
 
 import Product from '../components/products/Product';
 import Input from '../components/ui/Input';
@@ -11,7 +10,7 @@ import Loader from '../components/ui/Loader';
 
 import menuIcon from '../images/menu-variant.png';
 import logoIcon from '../images/Logo.png';
-// import avatarIcon from '../images/Avatar.png';
+import avatarIcon from '../images/Avatar.png';
 import { FaTimes, FaArrowRight } from 'react-icons/fa';
 
 const Home = ({ user }) => {
@@ -42,7 +41,7 @@ const Home = ({ user }) => {
   useEffect(() => {
     isSuccess && handleFilteredProducts(filteredCategory[0].category);
     // eslint-disable-next-line
-  }, [isSuccess, handleFilteredProducts, onAuthStateChanged]);
+  }, [isSuccess, handleFilteredProducts]);
 
   return (
     <>
@@ -68,11 +67,15 @@ const Home = ({ user }) => {
           <img src={logoIcon} alt='logo icon' />
 
           <NavLink to='/profile'>
-            <img src={user?.photoUrl} alt='profile icon' />
+            <img
+              src={user?.photoURL || avatarIcon}
+              alt='profile icon'
+              className={styles.profilePic}
+            />
           </NavLink>
         </nav>
         <div>
-          <p>Hi {user?.email}</p>
+          <p>Hi {user?.displayName || user?.email}</p>
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>

@@ -6,9 +6,12 @@
 .headerContainer {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 55px;
   padding: 0px 24px;
+}
+.headerContainer img{
+  cursor: pointer;
 }
 .profileHeader {
   display: flex;
@@ -21,6 +24,7 @@
   width: 75px;
   height: 75px;
   margin-right: 15px;
+  border-radius: 50%;
 }
 .profileHeader h2 {
   margin-bottom: 7px;

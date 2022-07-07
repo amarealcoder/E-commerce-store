@@ -1,19 +1,22 @@
+import styles from './Profile.module.css';
 import { useHistory } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../services/firebaseAuth';
 
-import styles from './Profile.module.css';
 import chevronRight from '../../images/chevron-left.png';
 import { NavLink } from 'react-router-dom';
 
-const Profile = ({user}) => {
+import avatarIcon from '../../images/Avatar.png';
+
+
+const Profile = ({ user }) => {
   const history = useHistory();
 
   //to delete a user
   const logOut = async () => {
     try {
       await signOut(auth);
-      history.push('/sign-in')
+      history.push('/');
     } catch (error) {
       console.log(error.message);
     }
@@ -23,12 +26,16 @@ const Profile = ({user}) => {
     <div className={styles.container}>
       <section>
         <header className={styles.headerContainer}>
-          <img src={chevronRight} alt='a right angle' />
+          <img
+            onClick={() => history.push('/home')}
+            src={chevronRight}
+            alt='a right angle'
+          />
           <h2>Profile</h2>
-          <span></span>
+          
         </header>
         <div className={styles.profileHeader}>
-          <img src={user?.photoUrl} alt='user avatar' />
+          <img src={user?.photoURL || avatarIcon} alt='user avatar' />
           <div>
             <h2>{user?.displayName}</h2>
             <p>{user?.email}</p>
