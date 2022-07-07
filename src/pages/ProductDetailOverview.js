@@ -78,9 +78,17 @@ const ProductsDetailOverview = () => {
             .map((product) => (
               <div key={product.id}>
                 <ProductsHeader>
-                  <FaChevronLeft size={25} onClick={() => history.push('/home')} />
+                  <FaChevronLeft
+                    style={{ cursor: 'pointer' }}
+                    size={25}
+                    onClick={() => history.push('/home')}
+                  />
                   <div>
-                    <FaCartPlus size={25} onClick={() => setIsOpen(true)} />
+                    <FaCartPlus
+                      style={{ cursor: 'pointer' }}
+                      size={25}
+                      onClick={() => setIsOpen(true)}
+                    />
                     <span>{cartCount}</span>
                   </div>
                 </ProductsHeader>
