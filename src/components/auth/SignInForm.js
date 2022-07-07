@@ -13,6 +13,7 @@ const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   //already has account user
   const handleSignIn = async (event) => {
@@ -21,9 +22,10 @@ const SignInForm = () => {
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
       history.replace('/home');
+      setError('');
       return user;
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      setError('Check your email and password again')
     }
     setLoading(false);
   };
@@ -82,6 +84,7 @@ const SignInForm = () => {
                   Don't have an account?
                   <span onClick={() => history.push('/')}>Sign Up here</span>
                 </p>
+                {error && <p className={styles.error}>{error}</p>}
               </div>
             </>
           )}

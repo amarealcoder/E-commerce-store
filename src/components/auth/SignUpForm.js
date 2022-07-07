@@ -23,6 +23,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   //first time user
   const handleSignUp = async (event) => {
@@ -31,9 +32,10 @@ const SignUpForm = () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       history.replace('/home');
+      setError('');
       return user;
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      setError('Check your email and password again');
     }
     setLoading(false);
   };
@@ -41,9 +43,10 @@ const SignUpForm = () => {
     try {
       const googleUser = await signInWithPopup(auth, provider);
       console.log(googleUser);
+      setError('');
       history.push('/home');
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err.message);
     }
   };
   return (
@@ -60,8 +63,8 @@ const SignUpForm = () => {
       }}
     >
       <section className={styles.tag}>
-        <h1 className={styles.audio}>Audio</h1>
-        <h3 className={styles.para}>Its modular and designed to last</h3>
+        <h1 className={styles.audio}>Buzzymart</h1>
+        <h3 className={styles.para}>Modular, durable and elite products</h3>
       </section>
       <section>
         <form className={styles.formContainer}>
@@ -106,6 +109,7 @@ const SignUpForm = () => {
                     Sign In here
                   </span>
                 </p>
+                {error && <p className={styles.error}>{error}</p>}
               </div>
             </>
           )}
