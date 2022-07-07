@@ -45,7 +45,7 @@ const Search = (props) => {
     <div className={styles.searchContainer}>
       <section className={styles.searchInputSection}>
         <header className={styles.searchHeader}>
-          <NavLink to='/'>
+          <NavLink to='/home'>
             <img src={chevronRight} alt='a right angle' />
           </NavLink>
           <h2>Search</h2>
