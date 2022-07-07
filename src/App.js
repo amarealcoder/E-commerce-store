@@ -47,10 +47,10 @@ function App() {
       <Route path='/search'>
         <Search />
       </Route>
-      <Route path='/search-results'>
+      <Route path='/filter-results'>
         <FilterResults />
       </Route>
-      <Route path='/home/:productId'>
+      <Route path='/:productId'>
         <ProductDetailOverview />
       </Route>
     </Switch>

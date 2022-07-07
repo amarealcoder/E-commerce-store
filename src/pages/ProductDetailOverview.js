@@ -78,7 +78,7 @@ const ProductsDetailOverview = () => {
             .map((product) => (
               <div key={product.id}>
                 <ProductsHeader>
-                  <FaChevronLeft size={25} onClick={() => history.push('/')} />
+                  <FaChevronLeft size={25} onClick={() => history.push('/home')} />
                   <div>
                     <FaCartPlus size={25} onClick={() => setIsOpen(true)} />
                     <span>{cartCount}</span>
@@ -157,7 +157,7 @@ const ProductsDetailOverview = () => {
           <div className={styles.otherProductsHeader}>
             <p>Another Product</p>
             <p
-              onClick={() => history.push('/search-results')}
+              onClick={() => history.push('/filter-results')}
               className={styles.more}
             >
               See All
