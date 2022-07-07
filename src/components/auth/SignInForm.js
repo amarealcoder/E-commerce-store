@@ -42,8 +42,8 @@ const SignInForm = () => {
       }}
     >
       <section className={styles.tag}>
-        <h1 className={styles.audio}>Audio</h1>
-        <h3 className={styles.para}>Its modular and designed to last</h3>
+        <h1 className={styles.audio}>Buzzymart</h1>
+        <h3 className={styles.para}>Modular, durable and elite products</h3>
       </section>
       <section>
         <form className={styles.formContainer}>
