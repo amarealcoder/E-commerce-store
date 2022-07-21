@@ -6,7 +6,7 @@ import { auth } from '../../services/firebaseAuth';
 import chevronRight from '../../images/chevron-left.png';
 import { NavLink } from 'react-router-dom';
 
-import avatarIcon from '../../images/Avatar.png';
+import avatarIcon from '../../images/Avatar.jpg';
 
 
 const Profile = ({ user }) => {

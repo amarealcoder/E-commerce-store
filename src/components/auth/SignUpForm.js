@@ -35,20 +35,21 @@ const SignUpForm = () => {
       setError('');
       return user;
     } catch (err) {
-      setError('Check your email and password again');
+      setError(err.message);
     }
     setLoading(false);
   };
   const signInWithGoogle = async () => {
     try {
-      const googleUser = await signInWithPopup(auth, provider);
-      console.log(googleUser);
+      const user = await signInWithPopup(auth, provider);
       setError('');
       history.push('/home');
+      return user;
     } catch (err) {
       setError(err.message);
     }
   };
+
   return (
     <div
       className={styles.bg}
@@ -95,9 +96,8 @@ const SignUpForm = () => {
                   alt='google icon'
                   onClick={() => signInWithGoogle()}
                 />
-                <img src={appleIcon} alt='apple icon' />
-                <img src={facebookIcon} alt='facebook icon' />
               </div>
+
               <div className={styles.formActions}>
                 <Button onClick={(event) => handleSignUp(event)}>
                   Sign Up
