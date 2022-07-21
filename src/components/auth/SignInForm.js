@@ -25,7 +25,7 @@ const SignInForm = () => {
       setError('');
       return user;
     } catch (err) {
-      setError('Check your email and password again')
+      setError(err.message)
     }
     setLoading(false);
   };

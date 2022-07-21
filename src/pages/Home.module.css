@@ -7,11 +7,12 @@
 .homeContainer .headerIcons {
   margin: 50px 0 29px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
-.headerIcons img{
-  cursor: pointer;
+.homeContainer h1{
+  font-size: 2.5rem;
+   color: #0acf83;
 }
 .navContainer {
   display: flex;
@@ -38,8 +39,9 @@ a.isActive {
   text-decoration: underline;
 }
 .profilePic {
-  width: 50%;
+  width: 60px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .homeContainer p {
   margin: 5px 0px;

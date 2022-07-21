@@ -9,8 +9,7 @@ import Input from '../components/ui/Input';
 import Loader from '../components/ui/Loader';
 
 import menuIcon from '../images/menu-variant.png';
-import logoIcon from '../images/Logo.png';
-import avatarIcon from '../images/Avatar.png';
+import avatarIcon from '../images/Avatar.jpg';
 import { FaTimes, FaArrowRight } from 'react-icons/fa';
 
 const Home = ({ user }) => {
@@ -43,6 +42,9 @@ const Home = ({ user }) => {
     // eslint-disable-next-line
   }, [isSuccess, handleFilteredProducts]);
 
+  const userEmailSplit = user.email || '';
+  const userName = userEmailSplit.split('@')[0];
+
   return (
     <>
       <section className={styles.homeContainer}>
@@ -64,18 +66,20 @@ const Home = ({ user }) => {
               </NavLink>
             </ul>
           )}
-          <img src={logoIcon} alt='logo icon' />
+          <h1>Buzzymart</h1>
 
           <NavLink to='/profile'>
-            <img
-              src={user?.photoURL || avatarIcon}
-              alt='profile icon'
-              className={styles.profilePic}
-            />
+            <div>
+              <img
+                src={user?.photoURL || avatarIcon}
+                alt='profile icon'
+                className={styles.profilePic}
+              />
+            </div>
           </NavLink>
         </nav>
         <div>
-          <p>Hi {user?.displayName || user?.email}</p>
+          <p>Hi {user?.displayName || userName}</p>
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
