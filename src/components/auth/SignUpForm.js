@@ -11,9 +11,7 @@ import { auth } from '../../services/firebaseAuth';
 import Button from '../ui/Button';
 import bgImage from '../../images/bgImage.png';
 
-import facebookIcon from '../../images/facebookIcon.png';
 import googleIcon from '../../images/googleIcon.png';
-import appleIcon from '../../images/appleIcon.png';
 import Loader from '../ui/Loader';
 
 const provider = new GoogleAuthProvider();
