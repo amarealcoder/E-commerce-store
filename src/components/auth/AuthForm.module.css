@@ -1,9 +1,9 @@
-.tag {
+.authHeader {
   margin-top: 50px;
   text-align: center;
   color: #ffffff;
 }
-.audio {
+.authHeader h1 {
   margin-bottom: 7px;
   font-weight: bold;
   font-size: 51.0476px;
@@ -11,49 +11,48 @@
   letter-spacing: 0.638095px;
   font-style: normal;
 }
-.para {
+.authHeader p {
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
 }
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
   margin-top: 120px;
 }
 .formContainer input {
-  padding: 20px 100px;
+  width: 100%;
+  padding: 20px;
   margin-bottom: 20px;
   border: 1px solid #bababa;
-  background: #ffffff;
   border-radius: 10px;
+  font-size: 1.5rem;
 }
 
 .formContainer input:focus {
   outline: 2px solid #16c782;
 }
 .formContainer input::placeholder {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 20px;
   color: #bababa;
   letter-spacing: 0.2px;
+  padding-left: 1rem;
 }
 .formContainer .emailInput {
   background-image: url(../../images/mailicons.svg);
   padding-left: 40px;
   background-repeat: no-repeat;
-  background-position: 10px 1rem;
+  background-position: 10px 1.5rem;
 }
 .formContainer .passwordInput {
   background-image: url(../../images/lockicons.svg);
   padding-left: 40px;
   background-repeat: no-repeat;
-  background-position: 10px 1rem;
+  background-position: 10px 1.5rem;
 }
-
 .formContainer .forgotPwd {
   color: #ffffff;
   font-style: normal;
@@ -69,8 +68,7 @@
 .formContainer .formActions {
   margin-top: 32px;
   text-align: center;
-  width: 150%;
-  padding: 20px 10px 
+  padding: 20px 10px;
 }
 .formContainer .socialIcons {
   display: flex;
@@ -96,19 +94,19 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.error{
+.error {
   color: #ffffff;
   margin-top: 10px;
 }
 
 @media (min-width: 600px) {
   .formContainer {
+    width: 40%;
     margin-top: 90px;
   }
-  .formContainer input {
-    padding: 20px 250px;
-  }
+
   .formContainer button {
-    padding: 20px 209px;
+    width: 100%;
+    /* padding: 20px 209px; */
   }
 }

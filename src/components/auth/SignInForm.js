@@ -25,7 +25,7 @@ const SignInForm = () => {
       setError('');
       return user;
     } catch (err) {
-      setError(err.message)
+      setError(err.message);
     }
     setLoading(false);
   };
@@ -43,53 +43,50 @@ const SignInForm = () => {
         position: 'fixed',
       }}
     >
-      <section className={styles.tag}>
-        <h1 className={styles.audio}>Buzzymart</h1>
-        <h3 className={styles.para}>Modular, durable and elite products</h3>
+      <section className={styles.authHeader}>
+        <h1>Buzzymart</h1>
+        <h3>Modular, durable and elite products</h3>
       </section>
-      <section>
-        <form className={styles.formContainer}>
-          <input
-            type='email'
-            placeholder={'Email'}
-            className={styles.emailInput}
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
 
-          <input
-            type='password'
-            placeholder={'Password'}
-            className={styles.passwordInput}
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
-              <div className={styles.socialIcons}>
-                <p onClick={() => history.push('/change-password')}>
-                  Forgot Password
-                </p>
-              </div>
-              <div className={styles.formActions}>
-                <Button onClick={(event) => handleSignIn(event)}>
-                  Sign In
-                </Button>
+      <form className={styles.formContainer}>
+        <input
+          type='email'
+          placeholder={'Email'}
+          className={styles.emailInput}
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
-                <p className={styles.formQuestion}>
-                  Don't have an account?
-                  <span onClick={() => history.push('/')}>Sign Up here</span>
-                </p>
-                {error && <p className={styles.error}>{error}</p>}
-              </div>
-            </>
-          )}
-        </form>
-      </section>
+        <input
+          type='password'
+          placeholder={'Password'}
+          className={styles.passwordInput}
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        {loading ? (
+          <Loader />
+        ) : (
+          <div>
+            <div className={styles.socialIcons}>
+              <p onClick={() => history.push('/change-password')}>
+                Forgot Password
+              </p>
+            </div>
+            <div className={styles.formActions}>
+              <Button onClick={(event) => handleSignIn(event)}>Sign In</Button>
+
+              <p className={styles.formQuestion}>
+                Don't have an account?
+                <span onClick={() => history.push('/')}>Sign Up here</span>
+              </p>
+              {error && <p className={styles.error}>{error}</p>}
+            </div>
+          </div>
+        )}
+      </form>
     </div>
   );
 };

@@ -63,58 +63,55 @@ const SignUpForm = () => {
         position: 'fixed',
       }}
     >
-      <section className={styles.tag}>
-        <h1 className={styles.audio}>Buzzymart</h1>
-        <h3 className={styles.para}>Modular, durable and elite products</h3>
+      <section className={styles.authHeader}>
+        <h1>Buzzymart</h1>
+        <h3>Modular, durable and elite products</h3>
       </section>
-      <section>
-        <form className={styles.formContainer}>
-          <input
-            type='email'
-            placeholder={'Email'}
-            className={styles.emailInput}
-            required
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
 
-          <input
-            type='password'
-            placeholder={'Password'}
-            className={styles.passwordInput}
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
-              <div className={styles.socialIcons}>
-                <img
-                  src={googleIcon}
-                  alt='google icon'
-                  onClick={() => signInWithGoogle()}
-                />
-              </div>
+      <form className={styles.formContainer}>
+        <input
+          type='email'
+          placeholder={'Email'}
+          className={styles.emailInput}
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
 
-              <div className={styles.formActions}>
-                <Button onClick={(event) => handleSignUp(event)}>
-                  Sign Up
-                </Button>
+        <input
+          type='password'
+          placeholder={'Password'}
+          className={styles.passwordInput}
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className={styles.socialIcons}>
+              <img
+                src={googleIcon}
+                alt='google icon'
+                onClick={() => signInWithGoogle()}
+              />
+            </div>
 
-                <p className={styles.formQuestion}>
-                  Already have an account?
-                  <span onClick={() => history.push('/sign-in')}>
-                    Sign In here
-                  </span>
-                </p>
-                {error && <p className={styles.error}>{error}</p>}
-              </div>
-            </>
-          )}
-        </form>
-      </section>
+            <div className={styles.formActions}>
+              <Button onClick={(event) => handleSignUp(event)}>Sign Up</Button>
+
+              <p className={styles.formQuestion}>
+                Already have an account?
+                <span onClick={() => history.push('/sign-in')}>
+                  Sign In here
+                </span>
+              </p>
+              {error && <p className={styles.error}>{error}</p>}
+            </div>
+          </>
+        )}
+      </form>
     </div>
   );
 };
