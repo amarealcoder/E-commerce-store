@@ -34,7 +34,7 @@ const Home = ({ user }) => {
 
       setActiveCategory(category);
     },
-    [isSuccess, data]
+    [isSuccess, data,]
   );
 
   useEffect(() => {
@@ -101,7 +101,7 @@ const Home = ({ user }) => {
                   activeCategory === item.category ? styles.active : ''
                 }
                 key={item.id}
-                to=''
+                to='/home'
                 onClick={() => handleFilteredProducts(item.category)}
               >
                 {item.category}
