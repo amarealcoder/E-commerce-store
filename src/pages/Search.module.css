@@ -1,7 +1,6 @@
 .searchContainer {
   margin: 60px 24px;
-  width: 3
-  40%;
+  width: 3 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +33,9 @@
   /* margin-bottom: 20px; */
   margin: 20px 0px;
 }
-
+.popularProducts {
+  cursor: pointer;
+}
 .popularProducts .popularProdContainer {
   display: flex;
   align-items: flex-start;
@@ -67,14 +68,14 @@
 
 @media (min-width: 600px) {
   /* .popularProducts { */
-    /* display: flex;
+  /* display: flex;
     flex-wrap: wrap; */
-    /* text-align: center; */
+  /* text-align: center; */
   /* } */
   /* .popularTitle { */
-    /* display: flex;
+  /* display: flex;
    justify-content: center;
    align-items: center; */
-    /* text-align: center; */
+  /* text-align: center; */
   /* } */
 }

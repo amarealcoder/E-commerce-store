@@ -81,7 +81,7 @@ const ProductsDetailOverview = () => {
                   <FaChevronLeft
                     style={{ cursor: 'pointer' }}
                     size={25}
-                    onClick={() => history.push('/home')}
+                    onClick={() => history.goBack()}
                   />
                   <div>
                     <FaCartPlus

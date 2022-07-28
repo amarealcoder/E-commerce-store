@@ -14,7 +14,7 @@ import ChangePassword from './components/profile/ChangePassword';
 
 function App() {
   const [user, setUser] = useState({});
-
+ 
   useEffect(() => {
     //firebase function to check the current user status
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -42,14 +42,13 @@ function App() {
       <Route path='/profile'>
         <Profile user={user} />
       </Route>
-
       <Route path='/search'>
         <Search />
       </Route>
       <Route path='/filter-results'>
         <FilterResults />
       </Route>
-      <Route path='/:productId'>
+      <Route path={`/details/:productId`}>
         <ProductDetailOverview />
       </Route>
     </Switch>
