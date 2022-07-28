@@ -74,24 +74,26 @@ const ProductsDetailOverview = () => {
         )}
         <section>
           {data
-            .filter((product) => product.id === Number(productId))
+            ?.filter((product) => product.id === Number(productId))
             .map((product) => (
               <div key={product.id}>
-                <ProductsHeader>
-                  <FaChevronLeft
-                    style={{ cursor: 'pointer' }}
-                    size={25}
-                    onClick={() => history.goBack()}
-                  />
-                  <div>
-                    <FaCartPlus
+                <div className={styles.productHeaderContainer}>
+                  <ProductsHeader>
+                    <FaChevronLeft
                       style={{ cursor: 'pointer' }}
                       size={25}
-                      onClick={() => setIsOpen(true)}
+                      onClick={() => history.goBack()}
                     />
-                    <span>{cartCount}</span>
-                  </div>
-                </ProductsHeader>
+                    <div>
+                      <FaCartPlus
+                        style={{ cursor: 'pointer' }}
+                        size={25}
+                        onClick={() => setIsOpen(true)}
+                      />
+                      <span>{cartCount}</span>
+                    </div>
+                  </ProductsHeader>
+                </div>
                 <div className={styles.productDetail}>
                   <div>
                     <ProductsTitleBadge
@@ -141,6 +143,7 @@ const ProductsDetailOverview = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className={styles.reviewsContainer}>
                   <p className={styles.reviewsDetail}>Reviews (120)</p>
                   {activeLink === 'overview' && <Comments />}
@@ -155,7 +158,6 @@ const ProductsDetailOverview = () => {
                       and everybody loves it. Try it and see!
                     </p>
                   )}
-                  <p className={styles.seeAll}>See All Reviews</p>
                 </div>
               </div>
             ))}
@@ -175,12 +177,17 @@ const ProductsDetailOverview = () => {
             {isSuccess &&
               data &&
               data.map((product) => (
-                <Product
-                  key={product.id}
-                  image={product.image}
-                  price={product.price}
-                  title={product.title}
-                />
+                <div key={product.id} style={{ cursor: 'pointer' }}>
+                  <Product
+                    image={product.image}
+                    price={product.price}
+                    title={product.title}
+                    onClick={() => {
+                      history.push(`/details/${product.id}`);
+                      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                    }}
+                  />
+                </div>
               ))}
           </div>
 
