@@ -8,7 +8,7 @@ const Comments = () => {
     <div className={styles.productReviews}>
       <div className={styles.reviewContent}>
         <div className={styles.reviewer}>
-          <img src={avatar} alt='avatar' />
+          {/* <img src={avatar} alt='avatar' /> */}
 
           <p className={styles.name}>Madelina</p>
           <span>I month ago</span>
@@ -28,7 +28,7 @@ const Comments = () => {
 
       <div className={styles.reviewContent}>
         <div className={styles.reviewer}>
-          <img src={avatar} alt='avatar' />
+          {/* <img src={avatar} alt='avatar' /> */}
 
           <p className={styles.name}>Madelina</p>
           <span>I month ago</span>
@@ -48,7 +48,7 @@ const Comments = () => {
 
       <div className={styles.reviewContent}>
         <div className={styles.reviewer}>
-          <img src={avatar} alt='avatar' />
+          {/* <img src={avatar} alt='avatar' /> */}
 
           <p className={styles.name}>Madelina</p>
           <span>I month ago</span>
@@ -68,7 +68,7 @@ const Comments = () => {
 
       <div className={styles.reviewContent}>
         <div className={styles.reviewer}>
-          <img src={avatar} alt='avatar' />
+          {/* <img src={avatar} alt='avatar' /> */}
 
           <p className={styles.name}>Madelina</p>
           <span>I month ago</span>
