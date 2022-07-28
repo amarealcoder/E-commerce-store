@@ -2,6 +2,8 @@
 
 .container1 .title {
   margin: 0 25px 25px 25px;
+  width: 100%;
+  max-width: 50%;
 }
 
 .container1 .title h3 {
@@ -25,11 +27,11 @@
   border: 1px solid #bababa;
   box-sizing: border-box;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .container1 button > img {
   margin-right: 5px;
-  cursor: pointer;
 }
 
 .container1 .filterContainer ul {
