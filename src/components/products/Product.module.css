@@ -2,6 +2,7 @@
   display: flex;
 }
 .products {
+  cursor: pointer;
   margin: 20px 30px;
   background-color: #ffffff;
   width: 250px;
@@ -19,7 +20,6 @@
   display: inline-block;
   margin: 5px 0 5px 10px;
   font-size: 14px;
-  /* margin: 10px; */
 }
 .products img {
   margin: 20px 0 0 0;

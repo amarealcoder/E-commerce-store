@@ -86,8 +86,8 @@ const ProductsDetailOverview = () => {
                     />
                     <div>
                       <FaCartPlus
-                        style={{ cursor: 'pointer' }}
-                        size={25}
+                        style={{ cursor: 'pointer', color: '#0acf83' }}
+                        size={30}
                         onClick={() => setIsOpen(true)}
                       />
                       <span>{cartCount}</span>
