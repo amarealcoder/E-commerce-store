@@ -139,7 +139,7 @@ const Home = ({ user }) => {
         <div className={styles.featured}>
           <p>Featured Products</p>
           <span>
-            <NavLink to='/search-results'>See all</NavLink>
+            <NavLink to='/filter-results'>See all</NavLink>
           </span>
         </div>
 
