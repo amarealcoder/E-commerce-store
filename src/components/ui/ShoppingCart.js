@@ -91,6 +91,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
               <p className={styles.amount}>
                 USD {product.price.toLocaleString()}
               </p>
+              
               <div className={styles.actionGroup}>
                 <div className={styles.buttons}>
                   <button
@@ -110,7 +111,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
                     +
                   </button>
                 </div>
-                <FaTrash onClick={() => handleDeleteItem(product.id)} />
+                <FaTrash onClick={() => handleDeleteItem(product.id)} style={{cursor: 'pointer'}}/>
               </div>
             </div>
           </div>
@@ -121,7 +122,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
         <p className={styles.totalAmount}>USD {sumTotalPrice}</p>
       </div>
       <div className={styles.buttonContainer}>
-        <Button>Proceed to Checkout </Button>
+        <Button disabled={isCartEmpty ? true : false}>Proceed to Checkout </Button>
       </div>
     </div>
   );
