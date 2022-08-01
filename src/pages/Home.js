@@ -116,7 +116,7 @@ const Home = ({ user }) => {
                 <div className={styles.prodDesc}>
                   <h2>{product.title}</h2>
                   <div className={styles.shopNow}>
-                    <NavLink to={`/${product.id}`}>
+                    <NavLink to={`/details/${product.id}`}>
                       Shop now
                       <FaArrowRight
                         style={{
