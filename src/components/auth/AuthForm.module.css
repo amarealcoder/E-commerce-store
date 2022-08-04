@@ -94,9 +94,11 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.error {
+.error, .msg {
+  text-align: center;
+font-size: 1.2rem;
   color: #ffffff;
-  margin-top: 10px;
+  margin: 10px  0;
 }
 
 @media (min-width: 600px) {

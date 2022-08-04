@@ -44,7 +44,7 @@ const Profile = ({ user }) => {
       </section>
       <section className={styles.profileActions}>
         <p className={styles.general}>General</p>
-        <NavLink to='/password-change'>
+        <NavLink to='/sign-in'>
           <p className={styles.profileInfo}>Edit profile</p>
         </NavLink>
         <hr />
