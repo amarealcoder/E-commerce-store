@@ -10,7 +10,6 @@ import Profile from './components/profile/Profile';
 import FilterResults from './pages/FilterResults';
 import SignInForm from './components/auth/SignInForm';
 import SignUpForm from './components/auth/SignUpForm';
-import ChangePassword from './components/profile/ChangePassword';
 
 function App() {
   const [user, setUser] = useState({});
@@ -32,9 +31,6 @@ function App() {
       </Route>
       <Route path='/sign-in'>
         <SignInForm />
-      </Route>
-      <Route path='/change-password'>
-        <ChangePassword user={user} />
       </Route>
       <Route path='/home'>
         <Home user={user} />

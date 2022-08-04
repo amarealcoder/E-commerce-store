@@ -1,7 +1,10 @@
 import styles from './AuthForm.module.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from 'firebase/auth';
 import { auth } from '../../services/firebaseAuth';
 
 import Button from '../ui/Button';
@@ -14,6 +17,7 @@ const SignInForm = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
 
   //already has account user
   const handleSignIn = async (event) => {
@@ -28,6 +32,18 @@ const SignInForm = () => {
       setError(err.message);
     }
     setLoading(false);
+  };
+
+  const handlePasswordReset = async (email) => {
+    try {
+      const emailReset = await sendPasswordResetEmail(auth, email);
+      setError('');
+      setMessage('Please, check your email for your password reset');
+      return emailReset;
+    } catch (err) {
+      setError(err.message);
+      setMessage('');
+    }
   };
 
   return (
@@ -49,6 +65,7 @@ const SignInForm = () => {
       </section>
 
       <form className={styles.formContainer}>
+        {message && <p className={styles.msg}>{message}</p>}
         <input
           type='email'
           placeholder={'Email'}
@@ -71,9 +88,7 @@ const SignInForm = () => {
         ) : (
           <div>
             <div className={styles.socialIcons}>
-              <p onClick={() => history.push('/change-password')}>
-                Forgot Password
-              </p>
+              <p onClick={() => handlePasswordReset(email)}>Forgot Password</p>
             </div>
             <div className={styles.formActions}>
               <Button onClick={(event) => handleSignIn(event)}>Sign In</Button>
