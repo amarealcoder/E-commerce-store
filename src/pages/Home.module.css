@@ -10,9 +10,9 @@
   justify-content: space-around;
   align-items: center;
 }
-.homeContainer h1{
-  font-size: 2.5rem;
-   color: #0acf83;
+.homeContainer h1 {
+  font-size: 1.75rem;
+  color: #0acf83;
 }
 .navContainer {
   display: flex;
@@ -39,7 +39,7 @@ a.isActive {
   text-decoration: underline;
 }
 .profilePic {
-  width: 60px;
+  width: 40px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -147,6 +147,12 @@ a.isActive {
 }
 
 @media (min-width: 600px) {
+  .homeContainer h1 {
+    font-size: 2.5rem;
+  }
+  .profilePic {
+    width: 60px;
+  }
   .homeProdDisplay .category {
     padding: 0;
   }
