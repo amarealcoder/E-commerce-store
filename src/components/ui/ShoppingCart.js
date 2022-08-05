@@ -15,13 +15,28 @@ const CartOverlay = ({ setIsOpen }) => {
 const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
   const isCartEmpty = cartItems.length === 0;
 
+  const handlePlus = (id) => {
+    const plusCount = cartItems.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            quantity: (item.quantity += 1),
+            totalQtyPrice: (item.quantity *= item.price),
+          }
+        : item
+    );
+    setCartItems(plusCount);
+    console.log(plusCount);
+    setCartCount((prevCount) => prevCount + 1);
+  };
+
   const handleMinus = (id) => {
     const minusCount = cartItems.map((item) =>
       item.id === id
         ? {
             ...item,
-            quantity: item.quantity - 1,
-            price: item.price / item.quantity,
+            quantity: (item.quantity -= 1),
+            totalQtyPrice: (item.totalQtyPrice -= item.price),
           }
         : item
     );
@@ -29,22 +44,6 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
     setCartItems(minusCount);
 
     setCartCount((prevCount) => prevCount - 1);
-  };
-
-  const handlePlus = (id) => {
-    const plusCount = cartItems.map((item) =>
-      item.id === id
-        ? {
-            ...item,
-            quantity: item.quantity + 1,
-            price: (item.quantity + 1) * item.price,
-          }
-        : item
-    );
-
-    setCartItems(plusCount);
-
-    setCartCount((prevCount) => prevCount + 1);
   };
 
   const handleDeleteItem = (id) => {
@@ -60,7 +59,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
     setCartItems([]);
   };
   //get all cart prices
-  const cartPrices = cartItems.map((item) => item.price);
+  const cartPrices = cartItems.map((item) => item.totalQtyPrice);
 
   //Add all cart prices
   const sumTotalPrice = cartPrices
@@ -89,9 +88,9 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
             <div className={styles.imageInfo}>
               <p>{product.title}</p>
               <p className={styles.amount}>
-                USD {product.price.toLocaleString()}
+                USD {product.totalQtyPrice.toLocaleString()}
               </p>
-              
+
               <div className={styles.actionGroup}>
                 <div className={styles.buttons}>
                   <button
@@ -111,7 +110,10 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
                     +
                   </button>
                 </div>
-                <FaTrash onClick={() => handleDeleteItem(product.id)} style={{cursor: 'pointer'}}/>
+                <FaTrash
+                  onClick={() => handleDeleteItem(product.id)}
+                  style={{ cursor: 'pointer' }}
+                />
               </div>
             </div>
           </div>
@@ -122,7 +124,9 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
         <p className={styles.totalAmount}>USD {sumTotalPrice}</p>
       </div>
       <div className={styles.buttonContainer}>
-        <Button disabled={isCartEmpty ? true : false}>Proceed to Checkout </Button>
+        <Button disabled={isCartEmpty ? true : false}>
+          Proceed to Checkout{' '}
+        </Button>
       </div>
     </div>
   );
