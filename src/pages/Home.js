@@ -50,9 +50,14 @@ const Home = ({ user }) => {
       <section className={styles.homeContainer}>
         <nav className={styles.headerIcons}>
           {!isMenuOpen ? (
-            <img src={menuIcon} alt='menu icon' onClick={handleOpenMenu} />
+            <img
+              src={menuIcon}
+              alt='menu icon'
+              onClick={handleOpenMenu}
+              style={{ cursor: 'pointer' }}
+            />
           ) : (
-            <FaTimes onClick={handleOpenMenu} />
+            <FaTimes onClick={handleOpenMenu} style={{ cursor: 'pointer' }} />
           )}
 
           {isMenuOpen && (
@@ -60,9 +65,11 @@ const Home = ({ user }) => {
               <NavLink to='/search' activeClassName={styles.isActive}>
                 Search
               </NavLink>
-
               <NavLink to='/profile' activeClassName={styles.isActive}>
                 Profile
+              </NavLink>
+              <NavLink to='/filter-results' activeClassName={styles.isActive}>
+                See all
               </NavLink>
             </ul>
           )}
