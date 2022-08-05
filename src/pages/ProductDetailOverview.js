@@ -32,22 +32,23 @@ const ProductsDetailOverview = () => {
     const newData = data.map((item) => ({
       ...item,
       quantity: 1,
+      totalQtyPrice: item.price
     }));
 
     //check item is already added before?
     const isExisting = cartItems.find((item) => item.id === id);
 
     if (isExisting) {
-      const increaseQuantity = cartItems.map((item) =>
+      const increaseQuantityAndPrice = cartItems.map((item) =>
         item.id === id
           ? {
               ...item,
-              quantity: item.quantity + 1,
-              price: (item.quantity + 1) * item.price,
+              quantity: item.quantity += 1,
+              totalQtyPrice: item.quantity *= item.price,
             }
           : item
       );
-      setCartItems(increaseQuantity);
+      setCartItems(increaseQuantityAndPrice);
     } else {
       // filter out item to add
       const itemToAdd = newData.filter((item) => item.id === id);

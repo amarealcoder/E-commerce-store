@@ -23,22 +23,19 @@
 }
 .content {
   display: block;
+  margin-bottom: 2.5rem;
 }
 .cartEmpty {
   font-size: 20px;
   color: red;
   font-weight: bold;
-  /* margin-left: 42%; */
   text-align: center;
 }
-.cartItems{
+.cartItems {
   margin: 0 2rem;
   padding: 1rem;
 }
-.imageContainer {
-  background: #f6f6f6;
-  border-radius: 10px;
-}
+
 .imageContainer img {
   width: 67px;
   height: 67px;
