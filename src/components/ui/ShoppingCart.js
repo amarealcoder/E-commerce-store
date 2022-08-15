@@ -88,7 +88,7 @@ const Cart = ({ setIsOpen, cartItems, setCartItems, setCartCount }) => {
             <div className={styles.imageInfo}>
               <p>{product.title}</p>
               <p className={styles.amount}>
-                USD {product.totalQtyPrice.toLocaleString()}
+                USD {product?.totalQtyPrice.toLocaleString() || ''}
               </p>
 
               <div className={styles.actionGroup}>
