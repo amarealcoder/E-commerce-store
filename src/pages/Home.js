@@ -34,7 +34,7 @@ const Home = ({ user }) => {
 
       setActiveCategory(category);
     },
-    [isSuccess, data,]
+    [isSuccess, data]
   );
 
   useEffect(() => {
@@ -42,8 +42,11 @@ const Home = ({ user }) => {
     // eslint-disable-next-line
   }, [isSuccess, handleFilteredProducts]);
 
-  const userEmailSplit = user.email || '';
+  const userEmailSplit = user?.email || '';
   const userName = userEmailSplit.split('@')[0];
+
+  const displayNameSplit = user?.displayName || '';
+  const userDisplayName = displayNameSplit.split(' ')[0];
 
   return (
     <>
@@ -86,7 +89,7 @@ const Home = ({ user }) => {
           </NavLink>
         </nav>
         <div>
-          <p>Hi {user?.displayName || userName}</p>
+          <p>Hi {userDisplayName || userName}</p>
           <h2>What are you looking for today?</h2>
         </div>
         <div className={styles.searchContainer}>
@@ -163,6 +166,7 @@ const Home = ({ user }) => {
                   image={product.image}
                   title={product.title}
                   price={product.price}
+                  onClick={() => history.push(`/details/${product.id}`)}
                 />
               ))}
         </div>
